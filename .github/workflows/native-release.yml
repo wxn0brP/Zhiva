@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
 
       - name: Install GTK and WebKit2GTK dependencies
         run: |
@@ -46,9 +46,9 @@ jobs:
         run: |
           GOOS=linux GOARCH=amd64 go build -o ./dist/native-linux
 
-      - name: Build Windows binary
-        run: |
-          GOOS=windows GOARCH=amd64 go build -o ./dist/native-windows.exe
+      # - name: Build Windows binary
+      #   run: |
+      #     GOOS=windows GOARCH=amd64 go build -o ./dist/native-windows.exe
 
       - name: Create native.version
         run: |
@@ -57,7 +57,7 @@ jobs:
 
       - name: Get latest release
         id: release
-        uses: actions/github-script@v7
+        uses: actions/github-script@v8
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
