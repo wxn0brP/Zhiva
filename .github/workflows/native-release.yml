@@ -9,6 +9,9 @@ on:
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./native
 
     steps:
       - name: Checkout repository
