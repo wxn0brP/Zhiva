@@ -31,12 +31,6 @@ jobs:
         with:
           go-version: "1.25"
 
-      - name: Get commit info
-        id: commit
-        run: |
-          echo "SHA=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
-          echo "TIME=$(date -u +%Y%m%d%H%M%S)" >> $GITHUB_OUTPUT
-
       - name: Prepare
         run: |
           go mod tidy
@@ -51,8 +45,7 @@ jobs:
 
       - name: Create native.version
         run: |
-          echo "Commit: ${{ steps.commit.outputs.SHA }}" > zhiva.nv.txt
-          echo "Time: ${{ steps.commit.outputs.TIME }}" >> zhiva.nv.txt
+          echo $(git rev-parse HEAD) > zhiva.nv.txt
           ls -al
 
       - name: Create/Update Release with assets
