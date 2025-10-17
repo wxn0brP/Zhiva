@@ -56,13 +56,15 @@ jobs:
           echo "Time: ${{ steps.commit.outputs.TIME }}" >> ./dist/native.version
 
       - name: Create/Update Release with assets
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: native
           name: native
           draft: false
           prerelease: false
-          overwrite: true
-          files: ./dist/native-linux,./dist/native.version
+          files: |
+            ./dist/native-linux
+            ./dist/native.version
+          overwrite_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
