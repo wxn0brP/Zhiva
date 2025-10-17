@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - "native/**"
+      - ".github/workflows/native-release.yml"
   workflow_dispatch:
 
 jobs:
@@ -31,11 +32,11 @@ jobs:
       - name: Build Linux binary
         run: |
           mkdir -p ./dist
-          GOOS=linux GOARCH=amd64 go build -o ./dist/native-linux ./native
+          GOOS=linux GOARCH=amd64 go build -o ./dist/native-linux
 
       - name: Build Windows binary
         run: |
-          GOOS=windows GOARCH=amd64 go build -o ./dist/native-windows.exe ./native
+          GOOS=windows GOARCH=amd64 go build -o ./dist/native-windows.exe
 
       - name: Create native.version
         run: |
