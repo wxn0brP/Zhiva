@@ -39,21 +39,21 @@ jobs:
 
       - name: Prepare
         run: |
-          mkdir -p ./dist
           go mod tidy
 
       - name: Build Linux binary
         run: |
-          GOOS=linux GOARCH=amd64 go build -o ./dist/native-linux
+          GOOS=linux GOARCH=amd64 go build -o native-linux
 
       # - name: Build Windows binary
       #   run: |
-      #     GOOS=windows GOARCH=amd64 go build -o ./dist/native-windows.exe
+      #     GOOS=windows GOARCH=amd64 go build -o native-windows.exe
 
       - name: Create native.version
         run: |
-          echo "Commit: ${{ steps.commit.outputs.SHA }}" > ./dist/native.version
-          echo "Time: ${{ steps.commit.outputs.TIME }}" >> ./dist/native.version
+          echo "Commit: ${{ steps.commit.outputs.SHA }}" > native.version
+          echo "Time: ${{ steps.commit.outputs.TIME }}" >> native.version
+          ll -al
 
       - name: Create/Update Release with assets
         uses: softprops/action-gh-release@v2
@@ -63,8 +63,8 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            ./dist/native-linux
-            ./dist/native.version
+            native-linux
+            native.version
           overwrite_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
