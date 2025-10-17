@@ -63,8 +63,8 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            native-linux
-            native.version
+            ./native/native-linux
+            ./native/native.version
           overwrite_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
