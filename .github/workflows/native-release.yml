@@ -53,7 +53,7 @@ jobs:
         run: |
           echo "Commit: ${{ steps.commit.outputs.SHA }}" > native.version
           echo "Time: ${{ steps.commit.outputs.TIME }}" >> native.version
-          ll -al
+          ls -al
 
       - name: Create/Update Release with assets
         uses: softprops/action-gh-release@v2
