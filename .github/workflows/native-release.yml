@@ -43,16 +43,16 @@ jobs:
 
       - name: Build Linux binary
         run: |
-          GOOS=linux GOARCH=amd64 go build -o native-linux
+          GOOS=linux GOARCH=amd64 go build -o zhiva-linux
 
       # - name: Build Windows binary
       #   run: |
-      #     GOOS=windows GOARCH=amd64 go build -o native-windows.exe
+      #     GOOS=windows GOARCH=amd64 go build -o zhiva-windows.exe
 
       - name: Create native.version
         run: |
-          echo "Commit: ${{ steps.commit.outputs.SHA }}" > native.version
-          echo "Time: ${{ steps.commit.outputs.TIME }}" >> native.version
+          echo "Commit: ${{ steps.commit.outputs.SHA }}" > zhiva.nv.txt
+          echo "Time: ${{ steps.commit.outputs.TIME }}" >> zhiva.nv.txt
           ls -al
 
       - name: Create/Update Release with assets
@@ -63,8 +63,8 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            ./native/native-linux
-            ./native/native.version
+            ./native/zhiva-linux
+            ./native/zhiva.nv.txt
           overwrite_files: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
