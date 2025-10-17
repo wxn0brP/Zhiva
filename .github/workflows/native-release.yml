@@ -1,0 +1,74 @@
+name: Build and Release Native
+
+on:
+  push:
+    paths:
+      - "native/**"
+  workflow_dispatch:
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "1.25"
+
+      - name: Get commit info
+        id: commit
+        run: |
+          echo "SHA=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+          echo "TIME=$(date -u +%Y%m%d%H%M%S)" >> $GITHUB_OUTPUT
+
+      - name: Build Linux binary
+        run: |
+          mkdir -p ./dist
+          GOOS=linux GOARCH=amd64 go build -o ./dist/native-linux ./native
+
+      - name: Build Windows binary
+        run: |
+          GOOS=windows GOARCH=amd64 go build -o ./dist/native-windows.exe ./native
+
+      - name: Create native.version
+        run: |
+          echo "Commit: ${{ steps.commit.outputs.SHA }}" > ./dist/native.version
+          echo "Time: ${{ steps.commit.outputs.TIME }}" >> ./dist/native.version
+
+      - name: Get latest release
+        id: release
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const releases = await github.rest.repos.listReleases({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              per_page: 1
+            });
+            if (releases.data.length > 0) {
+              return releases.data[0].tag_name;
+            }
+            return 'v0.0.0';
+
+      - name: Create/Update Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.release.outputs.result }}
+          name: ${{ steps.release.outputs.result }}
+          draft: false
+          prerelease: false
+          overwrite: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload release assets
+        uses: softprops/action-gh-release@v1
+        with:
+          files: ./dist/*
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
