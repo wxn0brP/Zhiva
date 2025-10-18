@@ -6,6 +6,10 @@ Zhiva is a framework for creating desktop applications using web technologies.
 
 Zhiva aims to combine the convenience of creating web-based interfaces with the ability to run as a desktop application. The project explores the integration possibilities of web technologies with the native system environment.
 
+## Installation
+
+[Install instructions](./INSTALL.md)
+
 ## Project Structure
 
 The main Zhiva repository is a multirepo containing various components:
@@ -18,3 +22,7 @@ The main Zhiva repository is a multirepo containing various components:
 ## Status
 
 The project is currently in the PoC/WIP phase. The entire structure and API are under exploration and may change significantly in the future.
+
+## License
+
+The project is released under the [MIT License](./LICENSE).
