@@ -4,8 +4,9 @@
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/wxn0brP/Zhiva-scripts/refs/heads/master/install/prepare.sh | bash
-~/.zhiva/bin/zhiva-install Zhiva-store-app
-~/.zhiva/bin/zhiva-startup Zhiva-store-app
+export PATH="$HOME/.zhiva/bin:$PATH"
+zhiva-install Zhiva-store-app
+zhiva-startup Zhiva-store-app
 ```
 
 ## Windows
