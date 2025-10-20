@@ -1,6 +1,6 @@
 # Zhiva Install Instruction
 
-## Linux
+## Linux / macOS
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/wxn0brP/Zhiva-scripts/refs/heads/master/install/prepare.sh | bash
