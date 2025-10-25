@@ -22,3 +22,7 @@ $env:Path += ";$HOME\.zhiva\bin"
 zhiva-install Zhiva-store-app
 zhiva-startup Zhiva-store-app
 ```
+
+Or
+
+[Zhiva Store Auto Install](https://github.com/wxn0brP/Zhiva-windows/releases/download/native/Zhiva-store-app.exe) (Experimental)
