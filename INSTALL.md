@@ -9,6 +9,18 @@ zhiva install Zhiva-store-app
 zhiva start Zhiva-store-app
 ```
 
+Remember to add the following to your `.bashrc` or `.zshrc` file:
+
+```bash
+export PATH="$HOME/.zhiva/bin:$PATH"
+```
+
+If you use **zsh**, add the following to your `.zshrc` file to enable **auto-completion** for Zhiva commands:
+
+```bash
+[ -s "$HOME/.zhiva/scripts/zhiva/_zhiva" ] && source "$HOME/.zhiva/scripts/zhiva/_zhiva"
+```
+
 ## Windows
 
 > **Note:**  
