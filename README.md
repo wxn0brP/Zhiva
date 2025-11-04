@@ -14,6 +14,10 @@ The main goal of Zhiva is to explore the possibilities of building lightweight, 
 
 Zhiva's architecture is based on a simple concept: a native process, creates a webview window and runs a local web server. The web application, built with standard web technologies, is then loaded into the webview. A communication bridge allows the web application to interact with the native process, enabling features like window management and system notifications.
 
+## Documentation
+
+For more detailed documentation on the framework's components, the CLI, and how to build applications, please see the [**Full Documentation (DOCS.md)**](./DOCS.md).
+
 ## Project Structure
 
 The Zhiva project is a monorepo containing several key components:
