@@ -3,7 +3,7 @@
 ## Linux / macOS
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/wxn0brP/Zhiva-scripts/refs/heads/master/install/prepare.sh | bash
+curl -fsSL https://raw.githubusercontent.com/wxn0brP/Zhiva/HEAD/install/prepare.sh | bash
 export PATH="$HOME/.zhiva/bin:$PATH"
 zhiva install Zhiva-store-app
 zhiva start Zhiva-store-app
@@ -18,7 +18,7 @@ export PATH="$HOME/.zhiva/bin:$PATH"
 If you use **zsh**, add the following to your `.zshrc` file to enable **auto-completion** for Zhiva commands:
 
 ```bash
-[ -s "$HOME/.zhiva/scripts/zhiva/_zhiva" ] && source "$HOME/.zhiva/scripts/zhiva/_zhiva"
+[ -s "$HOME/.zhiva/scripts/_zhiva" ] && source "$HOME/.zhiva/scripts/_zhiva"
 ```
 
 ## Windows
@@ -29,7 +29,7 @@ If you use **zsh**, add the following to your `.zshrc` file to enable **auto-com
 
 
 ```powershell
-powershell -c "irm https://raw.githubusercontent.com/wxn0brP/Zhiva-scripts/master/install/prepare.ps1 | iex"
+powershell -c "irm https://raw.githubusercontent.com/wxn0brP/Zhiva/HEAD/install/prepare.ps1 | iex"
 $env:Path += ";$HOME\.zhiva\bin"
 zhiva install Zhiva-store-app
 zhiva start Zhiva-store-app

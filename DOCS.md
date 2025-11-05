@@ -18,7 +18,7 @@ Zhiva's architecture is built around three main components working together:
 
 ## The `zhiva` Command-Line Interface (CLI)
 
-Zhiva comes with a powerful CLI tool named `zhiva` to help you manage your development workflow, from installation to execution. The CLI is located in the `scripts/zhiva` directory.
+Zhiva comes with a powerful CLI tool named `zhiva` to help you manage your development workflow, from installation to execution.
 
 Here are the main commands available:
 
