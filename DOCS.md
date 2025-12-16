@@ -81,6 +81,7 @@ Here is an example of a `zhiva.json` file with all possible fields:
     "static": {
         "dirs": {
             "/": "./public",
+            "-/": "./dist",
             "/assets": "./dist/assets"
         },
         "files": {
@@ -110,6 +111,6 @@ Here is an example of a `zhiva.json` file with all possible fields:
 **Static Application Serving**
 
 *   `static` (object): If this property is present, Zhiva will treat your application as a static web project. Instead of running a start command like `bun run start`, it will launch a built-in static server with the configuration you provide. This is ideal for simple websites or applications built with frameworks that output static files (like static site generators).
-    *   `dirs` (object): A mapping of URL paths to local directories you want to serve. For example, `{"/": "./public"}` will serve the contents of the `./public` directory at the root URL of your application.
+    *   `dirs` (object): A mapping of URL paths to local directories you want to serve. For example, `{"/": "./public"}` will serve the contents of the `./public` directory at the root URL of your application. If you want to serve multiple directories, you can use negative paths. For example, `{"/": "public", "-/": "./dist"}` will serve the contents of the `./public` and `./dist` directory at the root URL of your application.
     *   `files` (object): A mapping of specific URL paths to local files. This is useful for serving single files from specific routes. For example, `{"/config.js": "./conf/app.config.js"}`.
     *   `redirects` (object): A mapping of URL paths to other paths for HTTP redirects. For example, `{"/home": "/"}` will redirect users from `/home` to the root.
