@@ -1,0 +1,93 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Zhiva Application Configuration",
+    "description": "Configuration file for a Zhiva application.",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "The display name of the application, used for creating desktop shortcuts."
+        },
+        "branch": {
+            "type": "string",
+            "description": "The default git branch to clone when a user installs the application."
+        },
+        "redirect_repo": {
+            "type": "string",
+            "description": "If the repository moves, this field points to the new location (format: username/repository).",
+            "pattern": "^[^/]+/[^/]+$"
+        },
+        "redirect_zhiva": {
+            "type": "string",
+            "description": "Path to zhiva.json in a different location or branch (format: path/to/zhiva.json#branch).",
+            "pattern": "^.+\\.json(#[^#/\\\\]+)?$"
+        },
+        "desktop": {
+            "type": "array",
+            "description": "An array specifying where to create shortcuts on the user's system.",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "desktop",
+                    "share"
+                ]
+            },
+            "uniqueItems": true
+        },
+        "icon": {
+            "type": "string",
+            "description": "A path to an icon file (e.g., .png) to be used for the shortcut on Linux and macOS."
+        },
+        "win_icon": {
+            "type": "string",
+            "description": "A path to an icon file (e.g., .ico) to be used for the shortcut on Windows."
+        },
+        "static": {
+            "type": "object",
+            "description": "Configuration for serving a static web project with Zhiva's built-in server.",
+            "properties": {
+                "dirs": {
+                    "type": "object",
+                    "description": "A mapping of URL paths to local directories to serve.",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true
+                },
+                "files": {
+                    "type": "object",
+                    "description": "A mapping of specific URL paths to local files to serve.",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true
+                },
+                "redirects": {
+                    "type": "object",
+                    "description": "A mapping of URL paths to other paths for HTTP redirects.",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "uniqueItems": true
+                }
+            },
+            "additionalProperties": false
+        },
+        "description": {
+            "type": "string",
+            "description": "A description of the application."
+        },
+        "version": {
+            "type": "string",
+            "description": "The version of the application."
+        },
+        "author": {
+            "type": "string",
+            "description": "The author of the application."
+        }
+    },
+    "required": [
+        "name"
+    ],
+    "additionalProperties": false
+}

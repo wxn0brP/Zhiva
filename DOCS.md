@@ -114,3 +114,17 @@ Here is an example of a `zhiva.json` file with all possible fields:
     *   `dirs` (object): A mapping of URL paths to local directories you want to serve. For example, `{"/": "./public"}` will serve the contents of the `./public` directory at the root URL of your application. If you want to serve multiple directories, you can use negative paths. For example, `{"/": "public", "-/": "./dist"}` will serve the contents of the `./public` and `./dist` directory at the root URL of your application.
     *   `files` (object): A mapping of specific URL paths to local files. This is useful for serving single files from specific routes. For example, `{"/config.js": "./conf/app.config.js"}`.
     *   `redirects` (object): A mapping of URL paths to other paths for HTTP redirects. For example, `{"/home": "/"}` will redirect users from `/home` to the root.
+
+#### Validating `zhiva.json`
+
+Add to your user `settings.json` file: (vscode)
+```json
+"json.schemas": [
+    {
+        "fileMatch": [
+            "zhiva.json"
+        ],
+        "url": "https://raw.githubusercontent.com/wxn0brP/Zhiva/refs/heads/master/zhiva.schema.json"
+    }
+],
+```
