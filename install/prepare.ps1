@@ -43,4 +43,14 @@ Write-Host "[Z-IST-2-08] Adding Zhiva to PATH."
 $env:Path += ";$zhivaBinPath"
 [Environment]::SetEnvironmentVariable("PATH", $env:PATH, "User")
 
-Write-Host "[Z-IST-2-09] 💜 Zhiva command is installed."
+Write-Host "[Z-IST-2-09] 💜 Installing Zhiva protocol..."
+
+$protocol = "zhiva"
+$zhivaExe = Join-Path $zhivaBinPath "zhiva.cmd"
+
+New-Item "HKCU:\Software\Classes\$protocol" -Force | Out-Null
+New-ItemProperty "HKCU:\Software\Classes\$protocol" -Name "URL Protocol" -Value "" -Force | Out-Null
+New-Item "HKCU:\Software\Classes\$protocol\shell\open\command" -Force | Out-Null
+Set-ItemProperty "HKCU:\Software\Classes\$protocol\shell\open\command" -Name "(default)" -Value "`"$zhivaExe`" `"%1`"" -Force
+
+Write-Host "[Z-IST-2-10] 💜 Zhiva command is installed."

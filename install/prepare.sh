@@ -40,4 +40,31 @@ echo "[Z-IST-1-09] 💜 Zhiva-scripts is installed."
 ln -s $HOME/.zhiva/scripts/src/cli.ts $HOME/.zhiva/bin/zhiva
 chmod +x $HOME/.zhiva/bin/*
 
-echo "[Z-IST-1-10] 💜 Zhiva command is installed."
+echo "[Z-IST-1-10] 💜 Installing Zhiva protocol..."
+
+DESKTOP_FILE="$HOME/.local/share/applications/zhiva-protocol.desktop"
+mkdir -p "$(dirname "$DESKTOP_FILE")"
+
+cat > "$DESKTOP_FILE" <<EOF
+[Desktop Entry]
+Name=Zhiva
+Exec=sh -c '$HOME/.bun/bin/bun run $HOME/.zhiva/bin/zhiva protocol %u'
+Type=Application
+Terminal=false
+MimeType=x-scheme-handler/zhiva
+EOF
+
+chmod +x "$DESKTOP_FILE"
+
+CURRENT_HANDLER=$(xdg-mime query default x-scheme-handler/zhiva 2>/dev/null || echo "")
+if [ "$CURRENT_HANDLER" != "$(basename "$DESKTOP_FILE")" ]; then
+    if xdg-mime default "$(basename "$DESKTOP_FILE")" x-scheme-handler/zhiva; then
+        echo "[Z-IST-1-11] Zhiva protocol installed!"
+    else
+        echo "[Z-IST-1-12] Warning: Failed to register Zhiva protocol. Make sure xdg-utils is installed."
+    fi
+else
+    echo "[Z-IST-1-13] Zhiva protocol is already registered."
+fi
+
+echo "[Z-IST-1-14] 💜 Zhiva command is installed."
