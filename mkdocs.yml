@@ -1,0 +1,25 @@
+site_name: Zhiva Documentation
+site_url: https://wxn0brp.github.io/Zhiva
+repo_url: https://github.com/wxn0brP/Zhiva
+
+theme:
+  name: material
+  palette:
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+  logo: zhiva.ico
+  favicon: zhiva.ico
+
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - Getting Started: getting-started.md
+  - Architecture: architecture.md
+  - CLI Reference: cli.md
+  - Configuration: configuration.md
+  - Application Types: application-types.md
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences

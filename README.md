@@ -1,36 +1,37 @@
 # Zhiva
 
-Zhiva is a framework for creating desktop applications using web technologies. It aims to combine the convenience of web-based UI development with the power of native system integration.
-
-## Project Goals
-
-The main goal of Zhiva is to explore the possibilities of building lightweight, cross-platform desktop applications by leveraging modern web technologies. The project focuses on creating a simple yet powerful bridge between the web frontend and the native backend.
+Zhiva is a lightweight framework for creating cross-platform desktop applications using modern web technologies like HTML, CSS, and JavaScript/TypeScript. It prioritizes simplicity, performance, and a familiar development experience.
 
 ## Installation
 
-[Install instructions](./INSTALL.md)
+[Install instructions](./docs/installation.md)
 
-## Architecture Overview
+## Key Features
 
-Zhiva's architecture is based on a simple concept: a native process, creates a webview window and runs a local web server. The web application, built with standard web technologies, is then loaded into the webview. A communication bridge allows the web application to interact with the native process, enabling features like window management and system notifications.
+- **Lightweight & Fast**: Minimal resource usage and fast startup times thanks to its shared architecture and the [Bun](httpss://bun.sh) runtime.
+- **Web-Based UI**: Build your user interface with the web technologies you already know.
+- **Simple Communication**: Uses a standard HTTP REST API for communication between your frontend and backend, instead of complex IPC.
+- **Git-Based Distribution**: Applications are standard Git repositories, making them easy to install, share, and version.
+- **Shared Dependencies**: The core engine and libraries are installed once and shared by all Zhiva apps, saving significant disk space.
 
-## Documentation
+## Getting Started
 
-For more detailed documentation on the framework's components, the CLI, and how to build applications, please see the [**Full Documentation (DOCS.md)**](./DOCS.md).
+To learn how to install Zhiva and build your first application, please see the **[Full Documentation](./docs/index.md)**.
 
 ## Project Structure
 
 The Zhiva project is a monorepo containing several key components:
 
 -   **`master`**: The main repository containing this README, high-level documentation, and overall project coordination.
--   **[`base-lib`](https://github.com/wxn0brP/Zhiva-base-lib)**: A TypeScript library that provides the foundational components for building Zhiva applications. It includes a web server framework and a client-side API for communicating with the native host.
--   **[`native`](https://github.com/wxn0brP/Zhiva-native)**: The core native engine. It is responsible for creating and managing the webview window, handling native system interactions, and exposing a communication API to the web layer.
--   **[`scripts`](https://github.com/wxn0brP/Zhiva-scripts)**: A collection of utility scripts for setting up the development environment, installing Zhiva applications, and managing the application lifecycle.
+-   **[`base-lib`](https://github.com/wxn0brP/Zhiva-base-lib)**: A TypeScript library that provides the foundational components for building Zhiva applications.
+-   **[`native`](https://github.com/wxn0brP/Zhiva-native)**: The core native engine responsible for creating the webview window and handling native system interactions.
+-   **[`scripts`](https://github.com/wxn0brP/Zhiva-scripts)**: A collection of utility scripts for managing the application lifecycle.
 -   **[`store-app`](https://github.com/wxn0brP/Zhiva-store-app)**: An example application that serves as a simple app store for discovering and managing other Zhiva applications.
 
 ## Status
 
-This project is in a very early, experimental (Proof of Concept) stage. The architecture and API are subject to significant changes.
+This project is in an early, experimental (Proof of Concept) stage.
+The architecture and API are subject to change.
 
 ## License
 
