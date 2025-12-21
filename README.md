@@ -20,7 +20,7 @@ To learn how to install Zhiva and build your first application, please see the *
 
 ## Project Structure
 
-The Zhiva project is a monorepo containing several key components:
+The Zhiva project is a multi-repository project containing several key components:
 
 -   **`master`**: The main repository containing this README, high-level documentation, and overall project coordination.
 -   **[`base-lib`](https://github.com/wxn0brP/Zhiva-base-lib)**: A TypeScript library that provides the foundational components for building Zhiva applications.
