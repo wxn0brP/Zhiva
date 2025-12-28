@@ -12,6 +12,7 @@ The primary goal of Zhiva is to explore the possibilities of creating minimal, p
 - **Bun-powered backend**: Fast JavaScript/TypeScript runtime for the server and optional application logic.
 - **HTTP REST API communication**: Simple, familiar REST endpoints instead of complex IPC mechanisms.
 - **Serverless mode**: Run purely static web apps without writing any backend code.
+- **URL-based mode**: Load any external URL directly in the app window.
 - **Git-based applications**: Each app is a standard Git repository (e.g., hosted on GitHub), enabling easy installation, updates, and versioning.
 - **Shared dependencies**: Core components (native engine, base library, etc.) are installed globally once and shared across all applications — saving disk space and simplifying updates.
 - **Standard `package.json` support**: Applications can declare their own dependencies and a `"build"` script (e.g., for compiling React, Vite, or Svelte projects).

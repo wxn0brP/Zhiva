@@ -29,7 +29,29 @@ A `zhiva.json` for a static Vite application built into the `dist` directory:
 }
 ```
 
-## 2. Full-stack (with Backend)
+## 2. URL-based
+
+This mode allows you to wrap an existing web application or website within a Zhiva window.
+
+- **How it works**: You provide a URL in the `zhiva.json` file. Zhiva will create a window that loads the content directly from that URL.
+- **Use cases**:
+    - Turning a website or web app into a desktop application.
+    - Creating a dedicated browser for a specific service.
+- **Configuration**: To enable this mode, add the `"url"` property to your `zhiva.json`. The `url` and `static` properties are mutually exclusive.
+
+### Example
+
+A `zhiva.json` for loading an external website:
+
+```json
+{
+    "name": "My Wrapped App",
+    "icon": "./assets/icon.png",
+    "url": "https://example.com"
+}
+```
+
+## 3. Full-stack (with Backend)
 
 For applications that require server-side logic, Zhiva provides a powerful backend framework internally powered by the `falcon-frame` library, exposed through its `base-lib`.
 
@@ -44,7 +66,7 @@ For applications that require server-side logic, Zhiva provides a powerful backe
     - Tools that need to execute shell commands.
     - Applications requiring a persistent and secure state on the server.
 
-- **Configuration**: This is the default mode. If the `"static"` property is **not** present in `zhiva.json`, Zhiva runs the file specified in your `package.json`'s `"start"` script.
+- **Configuration**: This is the default mode. If the `"static"` or `"url"` property is **not** present in `zhiva.json`, Zhiva runs the file specified in your `package.json`'s `"start"` script.
 
 ### Example
 
