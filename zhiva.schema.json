@@ -42,6 +42,11 @@
             "type": "string",
             "description": "A path to an icon file (e.g., .ico) to be used for the shortcut on Windows."
         },
+        "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "A URL to load in the application window. When this is present, Zhiva runs in a special mode, similar to static-only."
+        },
         "static": {
             "type": "object",
             "description": "Configuration for serving a static web project with Zhiva's built-in server.",
@@ -89,5 +94,11 @@
     "required": [
         "name"
     ],
+    "not": {
+        "required": [
+            "static",
+            "url"
+        ]
+    },
     "additionalProperties": false
 }
