@@ -490,19 +490,47 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-full-stack-with-backend" class="md-nav__link">
+  <a href="#2-url-based" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Full-stack (with Backend)
+        2. URL-based
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Full-stack (with Backend)">
+    <nav class="md-nav" aria-label="2. URL-based">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#example_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-full-stack-with-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Full-stack (with Backend)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Full-stack (with Backend)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         Example
@@ -580,19 +608,47 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-full-stack-with-backend" class="md-nav__link">
+  <a href="#2-url-based" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. Full-stack (with Backend)
+        2. URL-based
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. Full-stack (with Backend)">
+    <nav class="md-nav" aria-label="2. URL-based">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#example_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-full-stack-with-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Full-stack (with Backend)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Full-stack (with Backend)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         Example
@@ -653,7 +709,26 @@
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="2-full-stack-with-backend">2. Full-stack (with Backend)</h2>
+<h2 id="2-url-based">2. URL-based</h2>
+<p>This mode allows you to wrap an existing web application or website within a Zhiva window.</p>
+<ul>
+<li><strong>How it works</strong>: You provide a URL in the <code>zhiva.json</code> file. Zhiva will create a window that loads the content directly from that URL.</li>
+<li><strong>Use cases</strong>:<ul>
+<li>Turning a website or web app into a desktop application.</li>
+<li>Creating a dedicated browser for a specific service.</li>
+</ul>
+</li>
+<li><strong>Configuration</strong>: To enable this mode, add the <code>"url"</code> property to your <code>zhiva.json</code>. The <code>url</code> and <code>static</code> properties are mutually exclusive.</li>
+</ul>
+<h3 id="example_1">Example</h3>
+<p>A <code>zhiva.json</code> for loading an external website:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;My Wrapped App&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./assets/icon.png&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="3-full-stack-with-backend">3. Full-stack (with Backend)</h2>
 <p>For applications that require server-side logic, Zhiva provides a powerful backend framework internally powered by the <code>falcon-frame</code> library, exposed through its <code>base-lib</code>.</p>
 <ul>
 <li>
@@ -674,10 +749,10 @@
 </ul>
 </li>
 <li>
-<p><strong>Configuration</strong>: This is the default mode. If the <code>"static"</code> property is <strong>not</strong> present in <code>zhiva.json</code>, Zhiva runs the file specified in your <code>package.json</code>'s <code>"start"</code> script.</p>
+<p><strong>Configuration</strong>: This is the default mode. If the <code>"static"</code> or <code>"url"</code> property is <strong>not</strong> present in <code>zhiva.json</code>, Zhiva runs the file specified in your <code>package.json</code>'s <code>"start"</code> script.</p>
 </li>
 </ul>
-<h3 id="example_1">Example</h3>
+<h3 id="example_2">Example</h3>
 <p>A typical full-stack Zhiva application has separate files for the backend (<code>src/index.ts</code>) and frontend (<code>src/browser.ts</code>).</p>
 <p><strong>Backend (<code>src/index.ts</code>)</strong>
 <div class="highlight"><pre><span></span><code><span class="c1">// Import the necessary components from Zhiva&#39;s base library</span>

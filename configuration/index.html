@@ -663,7 +663,8 @@
 <span class="w">        </span><span class="nt">&quot;redirects&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;/old&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/new&quot;</span>
 <span class="w">        </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com&quot;</span>
 <span class="p">}</span>
 </code></pre></div>
 <hr />
@@ -679,15 +680,15 @@
 <li><code>"share"</code>: Creates a shortcut in the system's application menu (on Linux and Windows).</li>
 </ul>
 </li>
-<li><code>icon</code> (string): A path to an icon file (<code>.png</code>) to be used for the shortcut on Linux and macOS.</li>
-<li><code>win_icon</code> (string): A path to an icon file (<code>.ico</code>) to be used for the shortcut on Windows.</li>
+<li><code>icon</code> (string): A path to an icon file (<code>.png</code>) to be used for the shortcut on Linux and macOS. This can also be an HTTP/HTTPS URL, from which Zhiva will download the icon during installation.</li>
+<li><code>win_icon</code> (string): A path to an icon file (<code>.ico</code>) to be used for the shortcut on Windows. This can also be an HTTP/HTTPS URL, from which Zhiva will download the icon during installation.</li>
 </ul>
 <hr />
 <h3 id="application-serving">Application Serving</h3>
-<p>You can define how your application is served. You can either run a full-stack application or a simple static server.</p>
+<p>You can define how your application is served. You can either run a full-stack application, a simple static server, or load a remote URL.</p>
 <ul>
 <li>
-<p><strong>Full-stack (Default)</strong>: If no <code>static</code> property is defined, Zhiva expects a <code>start</code> script in your <code>package.json</code>. Zhiva will run your server to handle all file serving and API logic.</p>
+<p><strong>Full-stack (Default)</strong>: If neither <code>static</code> nor <code>url</code> property is defined, Zhiva expects a <code>start</code> script in your <code>package.json</code>. Zhiva will run your server to handle all file serving and API logic.</p>
 </li>
 <li>
 <p><strong>Static Server (<code>static</code>)</strong>: If the <code>static</code> property is present, Zhiva will treat your application as a static web project. Instead of running a start command, it will launch a built-in static server with the configuration you provide. This is ideal for simple websites or applications built with frameworks that output static files (like Vite, React, or static site generators).</p>
@@ -698,7 +699,13 @@
 </ul>
 </li>
 <li><code>files</code> (object): A mapping of specific URL paths to local files. This is useful for serving single files from specific routes. Example: <code>{"/config.js": "./conf/app.config.js"}</code>.</li>
-<li><code>redirects</code> (object): A mapping of URL paths to other paths for HTTP redirects. Example: <code>{"/home": "/"}</code> will redirect users from <code>/home</code> to the root.</li>
+<li><code>redirects</code> (object): A mapping of URL paths to other paths for HTTP redirects. Example: <code>{"/home": "/"}</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Remote URL (<code>url</code>)</strong>: If the <code>url</code> property is present, Zhiva will open the specified URL directly in the application window. This is useful for wrapping existing web applications or websites. The <code>url</code> and <code>static</code> properties are mutually exclusive.</p>
+<ul>
+<li>Example: <code>"url": "https://example.com"</code> will load the Example website.</li>
 </ul>
 </li>
 </ul>
