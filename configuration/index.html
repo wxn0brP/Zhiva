@@ -662,6 +662,9 @@
 <span class="w">        </span><span class="p">},</span>
 <span class="w">        </span><span class="nt">&quot;redirects&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="nt">&quot;/old&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/new&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;vars&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;layout&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;public/layout.html&quot;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com&quot;</span>
@@ -700,6 +703,7 @@
 </li>
 <li><code>files</code> (object): A mapping of specific URL paths to local files. This is useful for serving single files from specific routes. Example: <code>{"/config.js": "./conf/app.config.js"}</code>.</li>
 <li><code>redirects</code> (object): A mapping of URL paths to other paths for HTTP redirects. Example: <code>{"/home": "/"}</code>.</li>
+<li><code>vars</code> (object): A mapping of variable names to values, used by the Falcon Frame engine. Example: <code>{"layout": "public/layout.html"}</code>.</li>
 </ul>
 </li>
 <li>
