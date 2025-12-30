@@ -72,11 +72,14 @@
                     "description": "A mapping of URL paths to other paths for HTTP redirects.",
                     "additionalProperties": {
                         "type": "string"
-                    },
-                    "uniqueItems": true
+                    }
+                },
+                "vars": {
+                    "type": "object",
+                    "description": "Variables to be used by the Falcon Frame engine (e.g., layout).",
+                    "additionalProperties": true
                 }
-            },
-            "additionalProperties": false
+            }
         },
         "description": {
             "type": "string",

@@ -26,6 +26,9 @@ Here is an example of a `zhiva.json` file with all possible fields:
         },
         "redirects": {
             "/old": "/new"
+        },
+        "vars": {
+            "layout": "public/layout.html"
         }
     },
     "url": "https://example.com"
@@ -63,6 +66,7 @@ You can define how your application is served. You can either run a full-stack a
         *   To serve multiple directories at the same root URL, you can use a negative path prefix. For example, `{"/": "public", "-/": "./dist"}` will serve the contents of both the `./public` and `./dist` directories at the root.
     *   `files` (object): A mapping of specific URL paths to local files. This is useful for serving single files from specific routes. Example: `{"/config.js": "./conf/app.config.js"}`.
     *   `redirects` (object): A mapping of URL paths to other paths for HTTP redirects. Example: `{"/home": "/"}`.
+    *   `vars` (object): A mapping of variable names to values, used by the Falcon Frame engine. Example: `{"layout": "public/layout.html"}`.
 
 *   **Remote URL (`url`)**: If the `url` property is present, Zhiva will open the specified URL directly in the application window. This is useful for wrapping existing web applications or websites. The `url` and `static` properties are mutually exclusive.
 
