@@ -12,8 +12,7 @@ function Write-Log {
 if (-not (Get-Command bun -ErrorAction SilentlyContinue)) {
     Write-Log "[Z-IST-2-01] bun is not installed."
     Write-Log "[Z-IST-2-02] Installing bun..."
-    irm https://bun.sh/install.ps1 | iex
-    $env:PATH += ";$USERPROFILE\.bun\bin"
+    winget install bun
     Write-Log "[Z-IST-2-03] Added ~/.bun/bin to PATH."
 } else {
     Write-Log "[Z-IST-2-04] 💜 bun is installed."
