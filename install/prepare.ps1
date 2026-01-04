@@ -40,10 +40,65 @@ bun run "%USERPROFILE%\.zhiva\scripts\src\cli.ts" %*
 $cmdContent | Set-Content -Path (Join-Path $zhivaBinPath "zhiva.cmd") -Force
 
 Write-Host "[Z-IST-2-08] Adding Zhiva to PATH."
-$env:Path += ";$zhivaBinPath"
-[Environment]::SetEnvironmentVariable("PATH", $env:PATH, "User")
+if (-not ("Win32.NativeMethods" -as [Type])) {
+    Add-Type -Namespace Win32 -Name NativeMethods -MemberDefinition @"
+[DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+public static extern IntPtr SendMessageTimeout(
+    IntPtr hWnd, uint Msg, UIntPtr wParam, string lParam,
+    uint fuFlags, uint uTimeout, out UIntPtr lpdwResult);
+"@
+}
 
-Write-Host "[Z-IST-2-09] 💜 Installing Zhiva protocol..."
+function Publish-Env {
+    $HWND_BROADCAST = [IntPtr]0xffff
+    $WM_SETTINGCHANGE = 0x1a
+    $result = [UIntPtr]::Zero
+    [Win32.NativeMethods]::SendMessageTimeout($HWND_BROADCAST, $WM_SETTINGCHANGE,
+        [UIntPtr]::Zero, "Environment", 2, 5000, [ref]$result) | Out-Null
+}
+
+function Write-Env {
+    param([String]$Key, [String]$Value)
+    $RegisterKey = Get-Item -Path 'HKCU:'
+    $EnvRegisterKey = $RegisterKey.OpenSubKey('Environment', $true)
+    if ($null -eq $Value) {
+        $EnvRegisterKey.DeleteValue($Key)
+    } else {
+        $RegistryValueKind = if ($Value.Contains('%')) {
+            [Microsoft.Win32.RegistryValueKind]::ExpandString
+        } elseif ($EnvRegisterKey.GetValue($Key)) {
+            $EnvRegisterKey.GetValueKind($Key)
+        } else {
+            [Microsoft.Win32.RegistryValueKind]::String
+        }
+        $EnvRegisterKey.SetValue($Key, $Value, $RegistryValueKind)
+    }
+    Publish-Env
+}
+
+function Get-Env {
+    param([String]$Key)
+    $RegisterKey = Get-Item -Path 'HKCU:'
+    $EnvRegisterKey = $RegisterKey.OpenSubKey('Environment')
+    $EnvRegisterKey.GetValue($Key, $null, [Microsoft.Win32.RegistryValueOptions]::DoNotExpandEnvironmentNames)
+}
+
+Write-Host "[Z-IST-2-09] Adding Zhiva to PATH via registry and current session."
+
+$currentPathFromRegistry = Get-Env -Key "PATH"
+$zhivaBinPathNormalized = $zhivaBinPath.TrimEnd('\')
+
+$pathArray = @()
+if ($currentPathFromRegistry) {
+    $pathArray = $currentPathFromRegistry -split ';' | Where-Object { $_ -and $_.TrimEnd('\') -ne $zhivaBinPathNormalized }
+}
+$updatedPathValue = ($pathArray + @($zhivaBinPathNormalized)) -join ';'
+
+Write-Env -Key "PATH" -Value $updatedPathValue
+$env:PATH = $updatedPathValue
+
+Write-Host "[Z-IST-2-10] Added to user PATH (registry and current session): $zhivaBinPath"
+Write-Host "[Z-IST-2-11] 💜 Installing Zhiva protocol..."
 
 $protocol = "zhiva"
 $zhivaExe = Join-Path $zhivaBinPath "zhiva.cmd"
@@ -53,4 +108,4 @@ New-ItemProperty "HKCU:\Software\Classes\$protocol" -Name "URL Protocol" -Value 
 New-Item "HKCU:\Software\Classes\$protocol\shell\open\command" -Force | Out-Null
 Set-ItemProperty "HKCU:\Software\Classes\$protocol\shell\open\command" -Name "(default)" -Value "`"$zhivaExe`" protocol `"%1`"" -Force
 
-Write-Host "[Z-IST-2-10] 💜 Zhiva command is installed."
+Write-Host "[Z-IST-2-12] 💜 Zhiva command is installed."
