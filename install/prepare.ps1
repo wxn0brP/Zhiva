@@ -1,8 +1,8 @@
 $LogFile = "$env:TEMP\zhiva-prepare.log"
 Start-Transcript -Path $LogFile -Append -Force
 
-winget install git
-winget install bun
+winget install Git.GIT
+winget install Oven-sh.Bun
 Write-Host "[Z-IST-2-01] 💜 Git and bun are installed."
 
 $zhivaPath = Join-Path $HOME ".zhiva"
