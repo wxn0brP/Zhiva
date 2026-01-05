@@ -18,6 +18,12 @@ Write-Host "[Z-IST-2-03] 💜 Git and bun are installed."
 
 $zhivaPath = Join-Path $HOME ".zhiva"
 $zhivaBinPath = Join-Path $zhivaPath "bin"
+
+if (Test-Path $zhivaBinPath) {
+    Write-Host "[Z-IST-2-04] 💜 Zhiva is already installed."
+    exit
+}
+
 New-Item -ItemType Directory -Path $zhivaBinPath -Force | Out-Null
 
 $zhivaScriptsPath = Join-Path $zhivaPath "scripts"
