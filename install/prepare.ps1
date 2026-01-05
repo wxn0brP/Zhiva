@@ -1,9 +1,20 @@
 $LogFile = "$env:TEMP\zhiva-prepare.log"
 Start-Transcript -Path $LogFile -Append -Force
 
-winget install Git.GIT
+winget install Git.Git
 winget install Oven-sh.Bun
-Write-Host "[Z-IST-2-01] 💜 Git and bun are installed."
+
+if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
+    Write-Host "[Z-IST-2-01] 💜 Error: git is not installed. Please install git manually."
+    exit 1
+}
+
+if (-not (Get-Command bun -ErrorAction SilentlyContinue)) {
+    Write-Host "[Z-IST-2-02] 💜 Error: bun is not installed. Please install bun manually."
+    exit 1
+}
+
+Write-Host "[Z-IST-2-03] 💜 Git and bun are installed."
 
 $zhivaPath = Join-Path $HOME ".zhiva"
 $zhivaBinPath = Join-Path $zhivaPath "bin"
@@ -20,7 +31,7 @@ Copy-Item -Path (Join-Path $zhivaScriptsPath "package.json") -Destination (Join-
 Set-Location $zhivaPath
 bun install --production --force
 bun run "%USERPROFILE%\.zhiva\scripts\src\cli.ts" self
-Write-Host "[Z-IST-2-02] 💜 Zhiva-scripts is installed."
+Write-Host "[Z-IST-2-10] 💜 Zhiva-scripts is installed."
 
 $cmdContent = @"
 @echo off
@@ -29,7 +40,7 @@ bun run "%USERPROFILE%\.zhiva\scripts\src\cli.ts" %*
 
 $cmdContent | Set-Content -Path (Join-Path $zhivaBinPath "zhiva.cmd") -Force
 
-Write-Host "[Z-IST-2-03] Adding Zhiva to PATH."
+Write-Host "[Z-IST-2-11] Adding Zhiva to PATH."
 if (-not ("Win32.NativeMethods" -as [Type])) {
     Add-Type -Namespace Win32 -Name NativeMethods -MemberDefinition @"
 [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
@@ -73,7 +84,7 @@ function Get-Env {
     $EnvRegisterKey.GetValue($Key, $null, [Microsoft.Win32.RegistryValueOptions]::DoNotExpandEnvironmentNames)
 }
 
-Write-Host "[Z-IST-2-04] Adding Zhiva to PATH via registry and current session."
+Write-Host "[Z-IST-2-12] Adding Zhiva to PATH via registry and current session."
 
 $currentPathFromRegistry = Get-Env -Key "PATH"
 $zhivaBinPathNormalized = $zhivaBinPath.TrimEnd('\')
@@ -87,8 +98,8 @@ $updatedPathValue = ($pathArray + @($zhivaBinPathNormalized)) -join ';'
 Write-Env -Key "PATH" -Value $updatedPathValue
 $env:PATH = $updatedPathValue
 
-Write-Host "[Z-IST-2-05] Added to user PATH (registry and current session): $zhivaBinPath"
-Write-Host "[Z-IST-2-06] 💜 Installing Zhiva protocol..."
+Write-Host "[Z-IST-2-13] Added to user PATH (registry and current session): $zhivaBinPath"
+Write-Host "[Z-IST-2-14] 💜 Installing Zhiva protocol..."
 
 $protocol = "zhiva"
 $zhivaExe = Join-Path $zhivaBinPath "zhiva.cmd"
@@ -100,5 +111,5 @@ Set-ItemProperty "HKCU:\Software\Classes\$protocol\shell\open\command" -Name "(d
 
 Start-Process (Join-Path (Join-Path $env:USERPROFILE ".zhiva\bin") "zhiva.cmd") -ArgumentList "self" -Wait
 
-Write-Host "[Z-IST-2-07] 💜 Zhiva command is installed."
+Write-Host "[Z-IST-2-15] 💜 Zhiva command is installed."
 Stop-Transcript
