@@ -667,7 +667,9 @@
 <span class="w">            </span><span class="nt">&quot;layout&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;public/layout.html&quot;</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com&quot;</span>
+<span class="w">    </span><span class="nt">&quot;url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://example.com&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;license&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;MIT&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;forcePort&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">8081</span>
 <span class="p">}</span>
 </code></pre></div>
 <hr />
@@ -685,9 +687,13 @@
 </li>
 <li><code>icon</code> (string): A path to an icon file (<code>.png</code>) to be used for the shortcut on Linux and macOS. This can also be an HTTP/HTTPS URL, from which Zhiva will download the icon during installation.</li>
 <li><code>win_icon</code> (string): A path to an icon file (<code>.ico</code>) to be used for the shortcut on Windows. This can also be an HTTP/HTTPS URL, from which Zhiva will download the icon during installation.</li>
+<li><code>license</code> (string): The license for your application.</li>
 </ul>
 <hr />
 <h3 id="application-serving">Application Serving</h3>
+<ul>
+<li><code>forcePort</code> (number): A port to force the application to run on. (if possible, sometimes port being taken by other process)</li>
+</ul>
 <p>You can define how your application is served. You can either run a full-stack application, a simple static server, or load a remote URL.</p>
 <ul>
 <li>
