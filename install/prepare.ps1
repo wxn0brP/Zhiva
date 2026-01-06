@@ -131,7 +131,7 @@ New-ItemProperty "HKCU:\Software\Classes\$protocol" -Name "URL Protocol" -Value 
 New-Item "HKCU:\Software\Classes\$protocol\shell\open\command" -Force | Out-Null
 Set-ItemProperty "HKCU:\Software\Classes\$protocol\shell\open\command" -Name "(default)" -Value "`"$zhivaExe`" protocol `"%1`"" -Force
 
-Start-Process (Join-Path (Join-Path $env:USERPROFILE ".zhiva\bin") "zhiva.cmd") -ArgumentList "self" -Wait
+Start-Process (Join-Path (Join-Path $env:USERPROFILE "\.zhiva\bin") "zhiva.cmd") -ArgumentList "self" -Wait
 
 Write-Host "[Z-IST-2-15] 💜 Zhiva command is installed."
 Write-Host ""
