@@ -44,6 +44,7 @@ if (-not (Test-Path $zhivaScriptsPath)) {
 Copy-Item -Path (Join-Path $zhivaScriptsPath "package.json") -Destination (Join-Path $zhivaPath "package.json") -Force
 Set-Location $zhivaPath
 bun install --production --force
+Write-Host "[Z-IST-2-09] 💜 Zhiva-scripts run self."
 bun run "%USERPROFILE%\.zhiva\scripts\src\cli.ts" self
 Write-Host "[Z-IST-2-10] 💜 Zhiva-scripts is installed."
 
@@ -134,6 +135,8 @@ New-Item "HKCU:\Software\Classes\$protocol" -Force | Out-Null
 New-ItemProperty "HKCU:\Software\Classes\$protocol" -Name "URL Protocol" -Value "" -Force | Out-Null
 New-Item "HKCU:\Software\Classes\$protocol\shell\open\command" -Force | Out-Null
 Set-ItemProperty "HKCU:\Software\Classes\$protocol\shell\open\command" -Name "(default)" -Value "`"$zhivaExe`" protocol `"%1`"" -Force
+
+Write-Host "[Z-IST-2-15] 💜 Zhiva protocol installed."
 
 Start-Process (Join-Path (Join-Path $env:USERPROFILE "\.zhiva\bin") "zhiva.cmd") -ArgumentList "self" -Wait
 
