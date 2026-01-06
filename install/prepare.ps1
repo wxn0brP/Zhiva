@@ -1,6 +1,14 @@
 $LogFile = "$env:TEMP\zhiva-prepare.log"
 Start-Transcript -Path $LogFile -Append -Force
 
+function Get-FreshPath {
+    $systemPath = [System.Environment]::GetEnvironmentVariable("PATH", "Machine")
+    $userPath   = [System.Environment]::GetEnvironmentVariable("PATH", "User")
+    return "$systemPath;$userPath"
+}
+
+$env:PATH = Get-FreshPath
+
 winget install Git.Git
 winget install Oven-sh.Bun
 
