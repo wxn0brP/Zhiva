@@ -45,7 +45,7 @@ Copy-Item -Path (Join-Path $zhivaScriptsPath "package.json") -Destination (Join-
 Set-Location $zhivaPath
 bun install --production --force
 Write-Host "[Z-IST-2-09] 💜 Zhiva-scripts run self."
-bun run "src/cli.ts" self
+bun run scripts/src/cli.ts self
 Write-Host "[Z-IST-2-10] 💜 Zhiva-scripts is installed."
 
 $cmdContent = @"
