@@ -118,4 +118,6 @@ Set-ItemProperty "HKCU:\Software\Classes\$protocol\shell\open\command" -Name "(d
 Start-Process (Join-Path (Join-Path $env:USERPROFILE ".zhiva\bin") "zhiva.cmd") -ArgumentList "self" -Wait
 
 Write-Host "[Z-IST-2-15] 💜 Zhiva command is installed."
+Write-Host ""
+Write-Host "Press Enter to continue..."
 Stop-Transcript
