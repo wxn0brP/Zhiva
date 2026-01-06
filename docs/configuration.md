@@ -31,7 +31,9 @@ Here is an example of a `zhiva.json` file with all possible fields:
             "layout": "public/layout.html"
         }
     },
-    "url": "https://example.com"
+    "url": "https://example.com",
+    "license": "MIT",
+    "forcePort": 8081
 }
 ```
 
@@ -50,10 +52,13 @@ Here is an example of a `zhiva.json` file with all possible fields:
     *   `"share"`: Creates a shortcut in the system's application menu (on Linux and Windows).
 *   `icon` (string): A path to an icon file (`.png`) to be used for the shortcut on Linux and macOS. This can also be an HTTP/HTTPS URL, from which Zhiva will download the icon during installation.
 *   `win_icon` (string): A path to an icon file (`.ico`) to be used for the shortcut on Windows. This can also be an HTTP/HTTPS URL, from which Zhiva will download the icon during installation.
+*   `license` (string): The license for your application.
 
 ---
 
 ### Application Serving
+
+*   `forcePort` (number): A port to force the application to run on. (if possible, sometimes port being taken by other process)
 
 You can define how your application is served. You can either run a full-stack application, a simple static server, or load a remote URL.
 

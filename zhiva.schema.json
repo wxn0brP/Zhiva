@@ -92,6 +92,14 @@
         "author": {
             "type": "string",
             "description": "The author of the application."
+        },
+        "license": {
+            "type": "string",
+            "description": "The license of the application."
+        },
+        "forcePort": {
+            "type": "number",
+            "description": "A port to force the application to run on."
         }
     },
     "required": [
