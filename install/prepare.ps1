@@ -50,10 +50,15 @@ Write-Host "[Z-IST-2-10] 💜 Zhiva-scripts is installed."
 $cmdContent = @"
 @echo off
 
-if "%~1"=="-hide" (
-    shift
-    start "" /min cmd /c "%~f0" %*
-    exit
+if defined _ZHIVA_BG_RUN (
+    bun run "%USERPROFILE%\.zhiva\scripts\src\cli.ts" %*
+    exit /b
+)
+
+if defined _ZHIVA_BG (
+	set _ZHIVA_BG_RUN=1
+	start "" /min cmd /c "%~f0" %*
+    exit /b
 )
 
 bun run "%USERPROFILE%\.zhiva\scripts\src\cli.ts" %*
