@@ -23,18 +23,6 @@ If you use **zsh**, add the following to your `.zshrc` file to enable **auto-com
 
 ## Windows
 
-> **Note:**  
-> Installation on Windows is currently experimental. We recommend switching to Linux for a better experience, as Windows sometimes feels like it's held together with digital duct tape.  
-> Anyway, Arch in everything is better than Windows.
+[Zhiva Store Auto Install](https://github.com/wxn0brP/Zhiva-windows/releases/download/native/Zhiva-store-app.exe)
 
-
-```powershell
-powershell -c "irm https://raw.githubusercontent.com/wxn0brP/Zhiva/HEAD/install/prepare.ps1 | iex"
-$env:Path += ";$HOME\.zhiva\bin"
-zhiva install Zhiva-store-app
-zhiva start Zhiva-store-app
-```
-
-Or
-
-[Zhiva Store Auto Install](https://github.com/wxn0brP/Zhiva-windows/releases/download/native/Zhiva-store-app.exe) (Experimental)
+Repository: [https://github.com/wxn0brP/Zhiva-windows](https://github.com/wxn0brP/Zhiva-windows)
