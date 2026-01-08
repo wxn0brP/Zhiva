@@ -23,6 +23,6 @@ If you use **zsh**, add the following to your `.zshrc` file to enable **auto-com
 
 ## Windows
 
-[Zhiva Store Auto Install](https://github.com/wxn0brP/Zhiva-windows/releases/download/native/Zhiva-store-app.exe)
+[Zhiva Store Auto Install](https://github.com/wxn0brP/Zhiva-windows/releases/download/latest/Zhiva-store-app.exe)
 
 Repository: [https://github.com/wxn0brP/Zhiva-windows](https://github.com/wxn0brP/Zhiva-windows)
