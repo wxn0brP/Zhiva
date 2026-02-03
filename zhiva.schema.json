@@ -22,17 +22,15 @@
             "description": "Path to zhiva.json in a different location or branch (format: path/to/zhiva.json#branch).",
             "pattern": "^.+\\.json(#[^#/\\\\]+)?$"
         },
-        "desktop": {
-            "type": "array",
-            "description": "An array specifying where to create shortcuts on the user's system.",
-            "items": {
-                "type": "string",
-                "enum": [
-                    "desktop",
-                    "share"
-                ]
-            },
-            "uniqueItems": true
+        "shortcut": {
+            "type": "string",
+            "description": "Flags specifying where to create shortcuts on the user's system.",
+            "enum": [
+                "d",
+                "m",
+                "dm",
+                "md"
+            ]
         },
         "icon": {
             "type": "string",

@@ -12,7 +12,7 @@ Here is an example of a `zhiva.json` file with all possible fields:
     "branch": "main",
     "redirect_repo": "new-org/new-repo",
     "redirect_zhiva": "config/zhiva.json#main",
-    "desktop": ["share", "desktop"],
+    "shortcut": "md",
     "icon": "./assets/icon.png",
     "win_icon": "./assets/icon.ico",
     "static": {
@@ -47,9 +47,9 @@ Here is an example of a `zhiva.json` file with all possible fields:
 *   `branch` (string): Specifies the default git branch to clone when a user installs your application. Defaults to the repository's default branch.
 *   `redirect_repo` (string): If your repository moves, you can use this field to point the `zhiva install` command to the new location. The format is `username/repository`.
 *   `redirect_zhiva` (string): If you want to keep your `zhiva.json` in a different location or branch within your repository, you can specify it here. The format is `path/to/zhiva.json#branch`.
-*   `desktop` (array of strings): An array specifying where to create shortcuts on the user's system.
-    *   `"desktop"`: Creates a shortcut on the user's desktop.
-    *   `"share"`: Creates a shortcut in the system's application menu (on Linux and Windows).
+*   `shortcut` string: Flags specifying where to create shortcuts on the user's system.
+    *   `"d"`: Creates a shortcut on the user's desktop.
+    *   `"m"`: Creates a shortcut in the system's application menu.
 *   `icon` (string): A path to an icon file (`.png`) to be used for the shortcut on Linux and macOS. This can also be an HTTP/HTTPS URL, from which Zhiva will download the icon during installation.
 *   `win_icon` (string): A path to an icon file (`.ico`) to be used for the shortcut on Windows. This can also be an HTTP/HTTPS URL, from which Zhiva will download the icon during installation.
 *   `license` (string): The license for your application.
