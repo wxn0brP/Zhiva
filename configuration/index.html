@@ -648,7 +648,7 @@
 <span class="w">    </span><span class="nt">&quot;branch&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;main&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;redirect_repo&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;new-org/new-repo&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;redirect_zhiva&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;config/zhiva.json#main&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;desktop&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;share&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;desktop&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;shortcut&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;md&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./assets/icon.png&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;win_icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;./assets/icon.ico&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;static&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -680,9 +680,9 @@
 <li><code>branch</code> (string): Specifies the default git branch to clone when a user installs your application. Defaults to the repository's default branch.</li>
 <li><code>redirect_repo</code> (string): If your repository moves, you can use this field to point the <code>zhiva install</code> command to the new location. The format is <code>username/repository</code>.</li>
 <li><code>redirect_zhiva</code> (string): If you want to keep your <code>zhiva.json</code> in a different location or branch within your repository, you can specify it here. The format is <code>path/to/zhiva.json#branch</code>.</li>
-<li><code>desktop</code> (array of strings): An array specifying where to create shortcuts on the user's system.<ul>
-<li><code>"desktop"</code>: Creates a shortcut on the user's desktop.</li>
-<li><code>"share"</code>: Creates a shortcut in the system's application menu (on Linux and Windows).</li>
+<li><code>shortcut</code> string: Flags specifying where to create shortcuts on the user's system.<ul>
+<li><code>"d"</code>: Creates a shortcut on the user's desktop.</li>
+<li><code>"m"</code>: Creates a shortcut in the system's application menu.</li>
 </ul>
 </li>
 <li><code>icon</code> (string): A path to an icon file (<code>.png</code>) to be used for the shortcut on Linux and macOS. This can also be an HTTP/HTTPS URL, from which Zhiva will download the icon during installation.</li>
