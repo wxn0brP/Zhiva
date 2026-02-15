@@ -2,6 +2,10 @@
 
 ## Linux / macOS
 
+### Required: 
+- [Git](https://git-scm.com)
+- [Bun](https://bun.sh) - If bun is not installed, the script will install it for you.
+
 ```bash
 curl -fsSL https://raw.githubusercontent.com/wxn0brP/Zhiva/HEAD/install/prepare.sh | bash
 export PATH="$HOME/.zhiva/bin:$PATH"

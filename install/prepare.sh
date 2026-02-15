@@ -2,18 +2,12 @@
 
 if ! command -v bun &> /dev/null; then
     echo "[Z-IST-1-01] bun is not installed."
-    read -p "Do you want to install bun? (y/n): " choice
-    if [[ "$choice" =~ ^[Yy]$ ]]; then
-        echo "[Z-IST-1-02] Installing bun..."
-        curl -fsSL https://bun.sh/install | bash
+    echo "[Z-IST-1-02] Installing bun..."
+    curl -fsSL https://bun.sh/install | bash
 
-        export PATH="$HOME/.bun/bin:$PATH"
-        echo "[Z-IST-1-03] Added ~/.bun/bin to PATH for current session."
-        echo "[Z-IST-1-04] 💜 Don't forget to add 'export PATH=\"\$HOME/.bun/bin:\$PATH\"' to your ~/.bashrc or ~/.zshrc."
-    else
-        echo "[Z-IST-1-05] Skipped bun installation."
-        exit 1
-    fi
+    export PATH="$HOME/.bun/bin:$PATH"
+    echo "[Z-IST-1-03] Added ~/.bun/bin to PATH for current session."
+    echo "[Z-IST-1-04] 💜 Don't forget to add 'export PATH=\"\$HOME/.bun/bin:\$PATH\"' to your ~/.bashrc or ~/.zshrc."
 else
     echo "[Z-IST-1-06] 💜 bun is installed."
 fi
