@@ -9,6 +9,7 @@ Here is an example of a `zhiva.json` file with all possible fields:
 ```json
 {
     "name": "My Awesome App",
+    "version": "1.0.0",
     "branch": "main",
     "redirect_repo": "new-org/new-repo",
     "redirect_zhiva": "config/zhiva.json#main",
@@ -37,13 +38,12 @@ Here is an example of a `zhiva.json` file with all possible fields:
 }
 ```
 
----
-
 ## Field Reference
 
 ### Installation & Metadata
 
 *   `name` (string): The display name of your application. This is used when creating desktop shortcuts.
+*   `version` (string): The version of your application.
 *   `branch` (string): Specifies the default git branch to clone when a user installs your application. Defaults to the repository's default branch.
 *   `redirect_repo` (string): If your repository moves, you can use this field to point the `zhiva install` command to the new location. The format is `username/repository`.
 *   `redirect_zhiva` (string): If you want to keep your `zhiva.json` in a different location or branch within your repository, you can specify it here. The format is `path/to/zhiva.json#branch`.
@@ -53,12 +53,11 @@ Here is an example of a `zhiva.json` file with all possible fields:
 *   `icon` (string): A path to an icon file (`.png`) to be used for the shortcut on Linux and macOS. This can also be an HTTP/HTTPS URL, from which Zhiva will download the icon during installation.
 *   `win_icon` (string): A path to an icon file (`.ico`) to be used for the shortcut on Windows. This can also be an HTTP/HTTPS URL, from which Zhiva will download the icon during installation.
 *   `license` (string): The license for your application.
+*   `forcePort` (number): A port to force the application to run on. (if possible, sometimes port being taken by other process)
 
 ---
 
 ### Application Serving
-
-*   `forcePort` (number): A port to force the application to run on. (if possible, sometimes port being taken by other process)
 
 You can define how your application is served. You can either run a full-stack application, a simple static server, or load a remote URL.
 
@@ -91,4 +90,5 @@ To get autocompletion and validation for `zhiva.json` in VS Code, add the follow
     }
 ],
 ```
+
 This uses the official [zhiva.schema.json](https://raw.githubusercontent.com/wxn0brP/Zhiva/master/zhiva.schema.json) for validation.
