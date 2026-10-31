@@ -92,7 +92,7 @@ BUN_BIN="$(command -v bun)"
 cat > "$DESKTOP_FILE" <<EOF
 [Desktop Entry]
 Name=Zhiva
-Exec=sh -c '$BUN_BIN run $HOME/.zhiva/bin/zhiva protocol %u'
+Exec=sh -c '"$BUN_BIN" run "$HOME/.zhiva/bin/zhiva" protocol %u'
 Type=Application
 Terminal=false
 MimeType=x-scheme-handler/zhiva
