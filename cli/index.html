@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://wxn0brp.github.io/Zhiva/cli/">
       
       
-        <link rel="prev" href="../architecture/">
+        <link rel="prev" href="../api/">
       
       
         <link rel="next" href="../configuration/">
@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../zhiva.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -323,14 +323,41 @@
   
   
     <li class="md-nav__item">
-      <a href="../architecture/" class="md-nav__link">
+      <a href="../development/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Architecture
+    Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
   
 
     
@@ -444,6 +471,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        create
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#uninstall" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -487,8 +525,96 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        search
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guess" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        guess
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cdf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        db
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        protocol
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doctor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        doctor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        version
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exit-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit codes
+      
+    </span>
+  </a>
   
 </li>
       
@@ -542,6 +668,87 @@
     
   
     Application Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../publishing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publishing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
   
 
     
@@ -615,6 +822,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        create
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#uninstall" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -658,8 +876,96 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        search
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guess" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        guess
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cdf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        cdf
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        db
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protocol" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        protocol
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doctor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        doctor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#version" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        version
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exit-codes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exit codes
+      
+    </span>
+  </a>
   
 </li>
       
@@ -684,9 +990,8 @@
 
 
 <h1 id="command-line-interface-cli">Command-Line Interface (CLI)</h1>
-<p>Zhiva comes with a powerful CLI tool named <code>zhiva</code> to help you manage your development workflow, from installation to execution.</p>
+<p>The <code>zhiva</code> CLI installs, updates and starts applications.</p>
 <h2 id="main-commands">Main Commands</h2>
-<p>Here are the main commands available:</p>
 <table>
 <thead>
 <tr>
@@ -705,6 +1010,11 @@
 <td><code>install</code></td>
 <td><code>i</code>, <code>add</code></td>
 <td>Install an application from a GitHub repository.</td>
+</tr>
+<tr>
+<td><code>create</code></td>
+<td><code>new</code></td>
+<td>Create a new application from a template.</td>
 </tr>
 <tr>
 <td><code>uninstall</code></td>
@@ -737,6 +1047,36 @@
 <td>Find an application by its name using fuzzy search.</td>
 </tr>
 <tr>
+<td><code>search</code></td>
+<td><code>s</code></td>
+<td>Search the registry for applications.</td>
+</tr>
+<tr>
+<td><code>cdf</code></td>
+<td><code>create-desktop-file</code></td>
+<td>Create desktop shortcuts for an installed app.</td>
+</tr>
+<tr>
+<td><code>db</code></td>
+<td></td>
+<td>Interact with the Zhiva database.</td>
+</tr>
+<tr>
+<td><code>protocol</code></td>
+<td></td>
+<td>Handle <code>zhiva://</code> links.</td>
+</tr>
+<tr>
+<td><code>doctor</code></td>
+<td></td>
+<td>Check the Zhiva installation.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td><code>--version</code>, <code>-v</code></td>
+<td>Show version information.</td>
+</tr>
+<tr>
 <td><code>help</code></td>
 <td><code>h</code></td>
 <td>Show the help message.</td>
@@ -749,31 +1089,67 @@
 <div class="highlight"><pre><span></span><code>zhiva<span class="w"> </span>start<span class="w"> </span>&lt;app-name&gt;
 </code></pre></div>
 <p>The <code>&lt;app-name&gt;</code> is always based on its GitHub repository path in the format <code>user/repo</code>. However, as a shortcut for the primary developer's apps (<code>wxn0brP</code>), you can omit the username.</p>
+<p>Use <code>.</code> to start the application in the current directory.</p>
 <p><strong>Examples:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1"># Start an app from another user</span>
 zhiva<span class="w"> </span>start<span class="w"> </span>some-user/their-cool-app
 
-<span class="c1"># Start one of the primary developer&#39;s apps (shortcut)</span>
+<span class="c1"># Start one of the primary developer's apps (shortcut)</span>
 zhiva<span class="w"> </span>start<span class="w"> </span>Zhiva-store-app
+
+<span class="c1"># Start the project in the current directory</span>
+zhiva<span class="w"> </span>start<span class="w"> </span>.
 </code></pre></div></p>
-<p>The <code>start</code> command also accepts options for controlling updates:
-- <code>-e, --engine &lt;mode&gt;</code>: Controls the update check for the native engine (<code>0</code>: auto, <code>1</code>: skip, <code>2</code>: force).
-- <code>-d, --deps &lt;mode&gt;</code>: Controls the update check for dependencies (<code>0</code>: auto, <code>1</code>: skip, <code>2</code>: force).</p>
+<p>By default the engine and dependencies are checked for updates at most once per hour. Use <code>-e 1</code> and <code>-d 1</code> to disable those checks, or <code>-u</code> to force an update now.</p>
+<ul>
+<li><code>-e, --engine &lt;mode&gt;</code>: Controls the update check for the native engine (<code>0</code>: auto, at most once per hour, <code>1</code>: skip, <code>2</code>: force).</li>
+<li><code>-d, --deps &lt;mode&gt;</code>: Controls the update check for dependencies (<code>0</code>: auto, at most once per hour, <code>1</code>: skip, <code>2</code>: force).</li>
+<li><code>-u, --update</code>: Forces the engine and dependency update (<code>-e 2 -d 2</code>).</li>
+</ul>
 <hr />
 <h3 id="install"><code>install</code></h3>
-<p>Installs an application from a GitHub repository.</p>
+<p>Installs an application from a GitHub repository or an archive.</p>
 <div class="highlight"><pre><span></span><code>zhiva<span class="w"> </span>install<span class="w"> </span>&lt;app-name-or-repo&gt;
+zhiva<span class="w"> </span>install<span class="w"> </span>./my-app.zip
 </code></pre></div>
 <p>Like the <code>start</code> command, the app name is based on the <code>user/repo</code> path.</p>
+<p>Archives are installed under <code>archive/&lt;file-name&gt;</code>. When the name cannot be derived from the file name, pass it with <code>-n &lt;name&gt;</code>.</p>
 <p><strong>Examples:</strong>
 <div class="highlight"><pre><span></span><code><span class="c1"># Install an app from another user</span>
 zhiva<span class="w"> </span>install<span class="w"> </span>some-user/their-cool-app
 
 <span class="c1"># Install an app from the primary developer (wxn0brP)</span>
-<span class="c1"># This is equivalent to &#39;zhiva install wxn0brP/Zhiva-store-app&#39;</span>
+<span class="c1"># This is equivalent to 'zhiva install wxn0brP/Zhiva-store-app'</span>
 zhiva<span class="w"> </span>install<span class="w"> </span>Zhiva-store-app
+
+<span class="c1"># Install a local archive</span>
+zhiva<span class="w"> </span>install<span class="w"> </span>./my-app.zip
 </code></pre></div></p>
 <p>The <code>install</code> command clones the repository into <code>~/.zhiva/apps</code>, installs its dependencies using <code>bun install</code>, runs the <code>build</code> script if defined in <code>package.json</code>, and can create desktop shortcuts.</p>
+<hr />
+<h3 id="create"><code>create</code></h3>
+<p>Creates a new application from the template.</p>
+<div class="highlight"><pre><span></span><code>zhiva<span class="w"> </span>create<span class="w"> </span><span class="o">[</span>name<span class="o">]</span>
+</code></pre></div>
+<p>The command clones the official template, removes its git history, sets the metadata in <code>package.json</code> and <code>zhiva.json</code>, replaces the <code>[YOUR NAME]</code>, <code>[YOUR APP NAME]</code> and <code>[YEAR]</code> placeholders, points the "Install via Zhiva" badge in the README at the new repository, and installs dependencies.</p>
+<p>When the name is omitted and the command runs in a terminal, it asks for the application directory first. When no metadata flags are passed, it then asks for the display name, author and description. If any of <code>--author</code>, <code>--display-name</code> or <code>--description</code> is passed, the command runs without questions.</p>
+<p><strong>Options:</strong>
+- <code>-t, --template &lt;url&gt;</code>: Use another template repository.
+- <code>-a, --author &lt;name&gt;</code>: Author name. Defaults to <code>git config user.name</code>.
+- <code>--display-name &lt;name&gt;</code>: Display name. Defaults to a name derived from the directory.
+- <code>--description &lt;text&gt;</code>: Description. Defaults to the display name.
+- <code>--no-install</code>: Skip dependency installation.
+- <code>--no-input</code>: Do not ask questions, use defaults.</p>
+<p><strong>Examples:</strong>
+<div class="highlight"><pre><span></span><code>zhiva<span class="w"> </span>create<span class="w"> </span>my-app
+zhiva<span class="w"> </span>create<span class="w"> </span>my-app<span class="w"> </span>--author<span class="w"> </span>wxn0brP<span class="w"> </span>--description<span class="w"> </span><span class="s2">"My first app"</span>
+zhiva<span class="w"> </span>create<span class="w"> </span>my-app<span class="w"> </span>--no-input
+zhiva<span class="w"> </span>create<span class="w"> </span>my-app<span class="w"> </span>--template<span class="w"> </span>/path/to/local/template
+<span class="nb">cd</span><span class="w"> </span>my-app
+bun<span class="w"> </span>run<span class="w"> </span>build
+zhiva<span class="w"> </span>start<span class="w"> </span>.
+</code></pre></div></p>
+<p>A local template must be a Git repository. <code>git clone</code> copies commits, not uncommitted changes, so commit the template first or create a temporary repository with the files you want.</p>
 <hr />
 <h3 id="uninstall"><code>uninstall</code></h3>
 <p>Removes a previously installed application.</p>
@@ -783,17 +1159,103 @@ zhiva<span class="w"> </span>install<span class="w"> </span>Zhiva-store-app
 <h3 id="list"><code>list</code></h3>
 <p>Lists all applications installed on your system.</p>
 <div class="highlight"><pre><span></span><code>zhiva<span class="w"> </span>list
+zhiva<span class="w"> </span>list<span class="w"> </span>--json
 </code></pre></div>
+<p><code>--json</code> prints an array of application names.</p>
 <hr />
 <h3 id="update"><code>update</code></h3>
 <p>Updates all installed Zhiva applications by pulling the latest changes from their respective Git repositories.</p>
 <div class="highlight"><pre><span></span><code>zhiva<span class="w"> </span>update
+zhiva<span class="w"> </span>update<span class="w"> </span>--json
 </code></pre></div>
+<p><code>--json</code> prints a map of application names to <code>true</code> (update available) or <code>false</code> (up to date) and does not modify anything.</p>
 <hr />
 <h3 id="self"><code>self</code></h3>
-<p>Updates the Zhiva framework itself, including the <code>zhiva</code> CLI and the shared native engine.</p>
+<p>Updates the Zhiva framework itself, including the <code>zhiva</code> CLI, the shared <code>base-lib</code> and the native engine.</p>
 <div class="highlight"><pre><span></span><code>zhiva<span class="w"> </span>self
 </code></pre></div>
+<hr />
+<h3 id="search"><code>search</code></h3>
+<p>Searches the registry for applications. Without arguments it lists every application.</p>
+<div class="highlight"><pre><span></span><code>zhiva<span class="w"> </span>search
+zhiva<span class="w"> </span>search<span class="w"> </span>store
+</code></pre></div>
+<p><strong>Options:</strong>
+- <code>--json</code>: Print the result as JSON.
+- <code>--pretty</code>: Print the JSON result with indentation.</p>
+<p>Each entry contains the repository name, description, star count and verification status.</p>
+<hr />
+<h3 id="guess"><code>guess</code></h3>
+<p>Finds installed applications by name using fuzzy matching. Without arguments it lists every installed application.</p>
+<div class="highlight"><pre><span></span><code>zhiva<span class="w"> </span>guess
+zhiva<span class="w"> </span>guess<span class="w"> </span>store
+</code></pre></div>
+<hr />
+<h3 id="cdf"><code>cdf</code></h3>
+<p>Creates desktop shortcuts for an installed application.</p>
+<div class="highlight"><pre><span></span><code>zhiva<span class="w"> </span>cdf<span class="w"> </span>&lt;app-name&gt;<span class="w"> </span><span class="o">[</span>flags<span class="o">]</span>
+</code></pre></div>
+<p><strong>Flags:</strong>
+- <code>d</code>: create a desktop shortcut
+- <code>m</code>: create a menu entry</p>
+<p>Defaults to <code>dm</code> when no flags are given.</p>
+<p><strong>Examples:</strong>
+<div class="highlight"><pre><span></span><code>zhiva<span class="w"> </span>cdf<span class="w"> </span>Zhiva-store-app<span class="w"> </span>d
+zhiva<span class="w"> </span>cdf<span class="w"> </span>username/repo<span class="w"> </span>dm
+</code></pre></div></p>
+<hr />
+<h3 id="db"><code>db</code></h3>
+<p>Low-level access to the Valthera database in <code>~/.zhiva/master.db</code>. The first argument is <code>collection.method</code>; JSON5 objects and arrays are parsed.</p>
+<div class="highlight"><pre><span></span><code>zhiva<span class="w"> </span>db<span class="w"> </span>apps.find
+zhiva<span class="w"> </span>db<span class="w"> </span>pref.find
+</code></pre></div>
+<p>The result is printed as JSON. The command is meant for debugging, not for application code.</p>
+<hr />
+<h3 id="protocol"><code>protocol</code></h3>
+<p>Handles <code>zhiva://</code> links on Linux. It is registered as a desktop protocol handler by the installer and is normally called by the system, not by hand.</p>
+<p>Supported commands:</p>
+<ul>
+<li><code>zhiva://start/&lt;app&gt;</code></li>
+<li><code>zhiva://install/&lt;app&gt;</code></li>
+<li><code>zhiva://install+start/&lt;app&gt;</code></li>
+<li><code>zhiva://open/&lt;url&gt;</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code>zhiva<span class="w"> </span>protocol<span class="w"> </span>zhiva://start/Zhiva-store-app
+</code></pre></div>
+<hr />
+<h3 id="doctor"><code>doctor</code></h3>
+<p>Checks the installation and prints one line per check with a suggested fix for failures.</p>
+<div class="highlight"><pre><span></span><code>zhiva<span class="w"> </span>doctor
+</code></pre></div>
+<p>It verifies Bun, Git, WebKitGTK, GTK 3, <code>xdg-utils</code>, the <code>zhiva://</code> handler, <code>PATH</code>, the native engine, <code>base-lib</code> and the database. On Windows it also checks the <code>zhiva.cmd</code> launcher, WebView2 and the registry protocol handler. The command exits with code <code>1</code> when a required component is missing.</p>
+<hr />
+<h3 id="version"><code>version</code></h3>
+<p>Shows the CLI version (or the git commit when no version is set), the engine version, the Bun version and the Zhiva root directory.</p>
+<div class="highlight"><pre><span></span><code>zhiva<span class="w"> </span>version
+zhiva<span class="w"> </span>--version
+zhiva<span class="w"> </span>version<span class="w"> </span>--json
+</code></pre></div>
+<hr />
+<h2 id="exit-codes">Exit codes</h2>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>0</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>1</code></td>
+<td>The command failed, or <code>zhiva doctor</code> found a missing component</td>
+</tr>
+</tbody>
+</table>
+<p>Errors are printed to stderr. Commands that offer <code>--json</code> print machine-readable output to stdout without colors.</p>
 
 
 
@@ -843,10 +1305,10 @@ zhiva<span class="w"> </span>install<span class="w"> </span>Zhiva-store-app
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>

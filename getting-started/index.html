@@ -14,14 +14,14 @@
         <link rel="prev" href="../installation/">
       
       
-        <link rel="next" href="../architecture/">
+        <link rel="next" href="../development/">
       
       
         
       
       
       <link rel="icon" href="../zhiva.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -379,10 +379,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-clone-the-template" class="md-nav__link">
+  <a href="#1-create-the-project" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Clone the Template
+        1. Create the Project
       
     </span>
   </a>
@@ -401,13 +401,30 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-install-dependencies-and-build" class="md-nav__link">
+  <a href="#3-build-the-frontend" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Install Dependencies and Build
+        3. Build the Frontend
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="3. Build the Frontend">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automatic-rebuilds-with-suglite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automatic rebuilds with suglite
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -427,6 +444,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next steps
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -442,14 +470,41 @@
   
   
     <li class="md-nav__item">
-      <a href="../architecture/" class="md-nav__link">
+      <a href="../development/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Architecture
+    Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
   
 
     
@@ -543,6 +598,87 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../publishing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Publishing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -593,10 +729,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-clone-the-template" class="md-nav__link">
+  <a href="#1-create-the-project" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Clone the Template
+        1. Create the Project
       
     </span>
   </a>
@@ -615,13 +751,30 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-install-dependencies-and-build" class="md-nav__link">
+  <a href="#3-build-the-frontend" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Install Dependencies and Build
+        3. Build the Frontend
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="3. Build the Frontend">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automatic-rebuilds-with-suglite" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Automatic rebuilds with suglite
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -638,6 +791,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next steps
+      
+    </span>
+  </a>
   
 </li>
       
@@ -662,17 +826,17 @@
 
 
 <h1 id="getting-started-with-zhiva">Getting Started with Zhiva</h1>
-<p>This guide will walk you through installing Zhiva and creating your first application.</p>
+<p>Install Zhiva, create an application, build the frontend and run it.</p>
 <h2 id="installation">Installation</h2>
 <p><a href="../installation/">Install instructions</a></p>
 <p>After installation, you will have the <code>zhiva</code> command available in your terminal.</p>
 <h2 id="creating-your-first-application">Creating Your First Application</h2>
-<p>The easiest way to start a new Zhiva application is by using the official template.</p>
-<h3 id="1-clone-the-template">1. Clone the Template</h3>
-<p>Use <code>git</code> to clone the template repository to your local machine:</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/wxn0brP/Zhiva-template-app<span class="w"> </span>my-awesome-app
+<p>The easiest way to start a new Zhiva application is the <code>create</code> command, which uses the official template.</p>
+<h3 id="1-create-the-project">1. Create the Project</h3>
+<div class="highlight"><pre><span></span><code>zhiva<span class="w"> </span>create<span class="w"> </span>my-awesome-app
 <span class="nb">cd</span><span class="w"> </span>my-awesome-app
 </code></pre></div>
+<p>The command clones the template, removes its git history, sets the metadata in <code>package.json</code> and <code>zhiva.json</code>, and installs dependencies. In a terminal it asks for the directory, display name, author and description; pass <code>--author</code>, <code>--display-name</code> and <code>--description</code> (or <code>--no-input</code>) to skip the questions.</p>
 <h3 id="2-understand-the-project-structure">2. Understand the Project Structure</h3>
 <p>The template provides a standard structure for a full-stack Zhiva application:</p>
 <div class="highlight"><pre><span></span><code>my-awesome-app/
@@ -683,6 +847,7 @@
 │   └── index.html       # The main HTML file for your UI
 ├── dist/                # (Generated) Compiled frontend code
 ├── package.json         # Project dependencies and scripts
+├── suglite.json5        # Watch configuration for suglite
 └── zhiva.json           # Zhiva-specific application manifest
 </code></pre></div>
 <ul>
@@ -690,15 +855,21 @@
 <li><strong><code>src/browser.ts</code></strong>: This is your client-side code. All your frontend logic goes here.</li>
 <li><strong><code>public/index.html</code></strong>: The webview loads this file, which then loads your compiled <code>browser.ts</code> script.</li>
 </ul>
-<h3 id="3-install-dependencies-and-build">3. Install Dependencies and Build</h3>
-<p>The template comes with a <code>package.json</code> file that defines the necessary dependencies and scripts.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Install dependencies</span>
-bun<span class="w"> </span>install
-
-<span class="c1"># Build the frontend</span>
+<h3 id="3-build-the-frontend">3. Build the Frontend</h3>
+<p><code>zhiva create</code> already installed the dependencies. Rebuild the frontend after changing <code>src/browser.ts</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Build the frontend</span>
 bun<span class="w"> </span>run<span class="w"> </span>build
 </code></pre></div>
 <p>The <code>build</code> command (defined in <code>package.json</code>) compiles <code>src/browser.ts</code> and places the output in the <code>dist/</code> directory.</p>
+<h4 id="automatic-rebuilds-with-suglite">Automatic rebuilds with suglite</h4>
+<p>The template ships a <code>suglite.json5</code> file:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nv">cmd</span><span class="p">:</span><span class="w"> </span><span class="s">"bun run build"</span><span class="p">,</span>
+<span class="w">    </span><span class="nv">watch</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s">"src"</span><span class="p">],</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>If you have <a href="https://github.com/wxn0brP/suglite">suglite</a> installed, run it in a second terminal next to <code>zhiva start .</code>. It watches <code>src</code>, runs <code>bun run build</code> after every change and prints the output. Restart the application after a rebuild: the window keeps the JavaScript it loaded at startup.</p>
+<p>Any other watcher works too; point it at <code>src</code> and run the <code>build</code> script.</p>
 <h3 id="4-run-the-application">4. Run the Application</h3>
 <p>You can now run your application using the <code>zhiva</code> CLI:</p>
 <div class="highlight"><pre><span></span><code>zhiva<span class="w"> </span>start<span class="w"> </span>.
@@ -708,7 +879,14 @@ bun<span class="w"> </span>run<span class="w"> </span>build
 bun<span class="w"> </span>run<span class="w"> </span>start
 </code></pre></div>
 <p>This will execute the <code>start</code> script in your <code>package.json</code> (which runs <code>src/index.ts</code>), launch the native window, and load your application.</p>
-<p>For a full guide on configuration and APIs, see the other documentation pages.</p>
+<h2 id="next-steps">Next steps</h2>
+<ul>
+<li><a href="../development/">Development</a>: build loop, adding API routes, debugging, environment variables.</li>
+<li><a href="../api/">API Reference</a>: backend and frontend APIs.</li>
+<li><a href="../configuration/">Configuration</a>: every <code>zhiva.json</code> field.</li>
+<li><a href="../publishing/">Publishing</a>: distributing an application and the store.</li>
+<li><a href="../troubleshooting/">Troubleshooting</a>: when something does not start.</li>
+</ul>
 
 
 
@@ -758,10 +936,10 @@ bun<span class="w"> </span>run<span class="w"> </span>start
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>

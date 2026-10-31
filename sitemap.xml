@@ -2,30 +2,46 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://wxn0brp.github.io/Zhiva/</loc>
-         <lastmod>2026-04-17</lastmod>
+         <lastmod>2026-10-31</lastmod>
+    </url>
+    <url>
+         <loc>https://wxn0brp.github.io/Zhiva/api/</loc>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://wxn0brp.github.io/Zhiva/application-types/</loc>
-         <lastmod>2026-04-17</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://wxn0brp.github.io/Zhiva/architecture/</loc>
-         <lastmod>2026-04-17</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://wxn0brp.github.io/Zhiva/cli/</loc>
-         <lastmod>2026-04-17</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://wxn0brp.github.io/Zhiva/configuration/</loc>
-         <lastmod>2026-04-17</lastmod>
+         <lastmod>2026-10-31</lastmod>
+    </url>
+    <url>
+         <loc>https://wxn0brp.github.io/Zhiva/development/</loc>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://wxn0brp.github.io/Zhiva/getting-started/</loc>
-         <lastmod>2026-04-17</lastmod>
+         <lastmod>2026-10-31</lastmod>
     </url>
     <url>
          <loc>https://wxn0brp.github.io/Zhiva/installation/</loc>
-         <lastmod>2026-04-17</lastmod>
+         <lastmod>2026-10-31</lastmod>
+    </url>
+    <url>
+         <loc>https://wxn0brp.github.io/Zhiva/publishing/</loc>
+         <lastmod>2026-10-31</lastmod>
+    </url>
+    <url>
+         <loc>https://wxn0brp.github.io/Zhiva/troubleshooting/</loc>
+         <lastmod>2026-10-31</lastmod>
     </url>
 </urlset>
