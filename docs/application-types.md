@@ -1,20 +1,45 @@
 # Application Types
 
-Zhiva supports two main types of applications, giving you the flexibility to choose the right approach for your project's needs.
+Zhiva supports three kinds of applications. The mode is selected in `zhiva.json`; the checks run in this order:
 
-## 1. Serverless (Static-only)
+1. `static` is present: static server, no backend process,
+2. `url` is present: the window loads a remote URL,
+3. neither: full-stack mode, Zhiva runs the `start` script from `package.json`.
 
-This is the simplest way to create a Zhiva application and is perfect for pure frontend projects.
+`static` and `url` are mutually exclusive. `name` is required by the schema.
 
-- **How it works**: You provide a directory with built static files (e.g., `dist/` or `build/`). Zhiva's built-in web server hosts these files directly.
-- **Use cases**:
-    - Single Page Applications (SPAs) built with frameworks like React, Vue, Svelte, or Angular.
-    - Static websites or documentation sites.
-- **Configuration**: To enable this mode, add the `"static"` property to your `zhiva.json`.
+## 1. Full-stack (default)
 
-### Example
+The application runs a Bun backend, usually with `base-lib`, and the window loads the local server.
 
-A `zhiva.json` for a static Vite application built into the `dist` directory:
+- **Use cases**: local databases, file system access, shell commands, authenticated APIs, persistent state.
+- **Requirements**: `package.json` with a `start` script, `zhiva.json` with a `name`.
+- **Communication**: an authenticated REST API through `apiRouter`.
+
+A minimal backend:
+
+```typescript
+import { app, oneWindow } from "@wxn0brp/zhiva-base-lib/server";
+import { apiRouter } from "@wxn0brp/zhiva-base-lib/api";
+
+app.static("public");
+app.static("dist");
+
+apiRouter.get("/hello", async () => {
+    return { err: false, msg: "Hello world!" };
+});
+
+oneWindow();
+```
+
+The frontend calls `fetchApiJson("hello")`. See [API Reference](api.md) and [Development](development.md).
+
+## 2. Static-only
+
+Zhiva serves built files with its own server. No application backend is started, so there is no `apiRouter` and no API token.
+
+- **Use cases**: SPAs built with Vite, React, Vue, Svelte or Angular, documentation sites, static tools.
+- **Configuration**: the `static` object in `zhiva.json`.
 
 ```json
 {
@@ -23,25 +48,33 @@ A `zhiva.json` for a static Vite application built into the `dist` directory:
     "static": {
         "dirs": {
             "/": "./public",
-            "-/": "./dist"
+            "-/": "./dist",
+            "/assets": "./dist/assets"
+        },
+        "files": {
+            "/config.js": "./src/config.js"
+        },
+        "redirects": {
+            "/old": "/new"
         }
     }
 }
 ```
 
-## 2. URL-based
+- `dirs`: maps URL paths to directories. If omitted, Zhiva serves `.` at `/`.
+- Negative prefixes (`-/`) allow several directories to share the same URL root; the leading dashes are stripped.
+- `files`: maps a URL to a single file.
+- `redirects`: maps a URL to a redirect target.
+- `vars`: Falcon Frame variables, for example `{ "layout": "public/layout.html" }`.
 
-This mode allows you to wrap an existing web application or website within a Zhiva window.
+Assemble the build output yourself and point `dirs` at it. Installation still runs `bun install --production` and the `build` script when `package.json` defines them, so you can build the assets during install instead of committing `dist/`; if you do not define a build step, commit the built files.
 
-- **How it works**: You provide a URL in the `zhiva.json` file. Zhiva will create a window that loads the content directly from that URL.
-- **Use cases**:
-    - Turning a website or web app into a desktop application.
-    - Creating a dedicated browser for a specific service.
-- **Configuration**: To enable this mode, add the `"url"` property to your `zhiva.json`. The `url` and `static` properties are mutually exclusive.
+## 3. URL-based
 
-### Example
+The window loads a remote website. No local server, no API, no token.
 
-A `zhiva.json` for loading an external website:
+- **Use cases**: wrapping an existing web application or service in a window.
+- **Configuration**: the `url` field in `zhiva.json`.
 
 ```json
 {
@@ -51,81 +84,14 @@ A `zhiva.json` for loading an external website:
 }
 ```
 
-## 3. Full-stack (with Backend)
+The page runs with the permissions of the remote site, not of a Zhiva application. Window bindings such as `zhiva_closeApp` and `zhiva_openExternal` are still injected, but the site may not use them. If the native engine is unavailable, the URL opens in the default browser.
 
-For applications that require server-side logic, Zhiva provides a powerful backend framework internally powered by the `falcon-frame` library, exposed through its `base-lib`.
+## Choosing a mode
 
-- **How it works**: You write your backend code in a main entry file (e.g., `src/index.ts`). You import `app` and `oneWindow` from `@wxn0brp/zhiva-base-lib/server` to serve static files and create the application window. For API endpoints, you import `apiRouter` from `@wxn0brp/zhiva-base-lib/api`. This provides an Express-like API experience.
+| Requirement | Mode |
+| --- | --- |
+| Local files, database, shell commands | Full-stack |
+| Existing static build, no backend | Static |
+| Existing website, no local code | URL |
 
-- **Convenient Response Handling**: For enhanced Developer Experience (DX), API handlers can simply return a JavaScript `object` or `string`, and the framework will automatically convert it into a proper JSON or text HTTP response.
-
-- **Secure `apiRouter`**: This router is designed for secure API communication. It automatically handles authentication, ensuring that only your application's frontend can access its endpoints.
-
-- **Use cases**:
-    - Applications that need to interact with a local database or file system.
-    - Tools that need to execute shell commands.
-    - Applications requiring a persistent and secure state on the server.
-
-- **Configuration**: This is the default mode. If the `"static"` or `"url"` property is **not** present in `zhiva.json`, Zhiva runs the file specified in your `package.json`'s `"start"` script.
-
-### Example
-
-A typical full-stack Zhiva application has separate files for the backend (`src/index.ts`) and frontend (`src/browser.ts`).
-
-**Backend (`src/index.ts`)**
-```typescript
-// Import the necessary components from Zhiva's base library
-import { apiRouter } from "@wxn0brp/zhiva-base-lib/api";
-import { app, oneWindow } from "@wxn0brp/zhiva-base-lib/server";
-
-// Serve static assets from the public and dist directories
-app.static("public");
-app.static("dist");
-
-// Define a secure API endpoint to get a list of installed apps
-apiRouter.get("/installed", async (req) => {
-    // ... logic to get installed apps ...
-    const installedApps = ["wxn0brP/example-app"];
-    // Simply return an object, and it will be sent as JSON
-    return { apps: installedApps, message: "Apps fetched successfully" };
-});
-
-apiRouter.get("/hello", (req) => {
-    // Return a string, and it will be sent as plain text
-    return "Hello from Zhiva backend!";
-});
-
-apiRouter.get("/error", (req, res) => {
-    // Like express, you can send a response with res.status()
-    res.status(500).send("Internal Server Error");
-})
-
-// Create the application window
-oneWindow();
-
-// The server is started automatically by Zhiva.
-```
-
-**Frontend (`src/browser.ts`)**
-Your frontend code (which is compiled into the `dist` folder) can then make simple `fetch` calls.
-
-```typescript
-import { fetchApi } from "@wxn0brp/zhiva-base-lib/front/api";
-
-async function getApps() {
-    const response = await fetchApi('installed');
-    const data = await response.json();
-    console.log(data.apps); // -> ["wxn0brP/example-app"]
-}
-
-async function sayHello() {
-    const response = await fetchApi('hello');
-    const text = await response.text();
-    console.log(text); // -> "Hello from Zhiva backend!"
-}
-
-getApps();
-sayHello();
-```
-
-In these examples, API handlers can return a JavaScript object or a string directly, providing a clear and concise way to define responses without explicit `res.json()` or `res.send()` calls. The `req` object is available for accessing query parameters, headers, etc.
+For a new project, start with `zhiva create`, which generates a full-stack application. Remove the backend only when you are sure the app needs no server-side logic.

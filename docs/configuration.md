@@ -1,21 +1,21 @@
-# Configuration: zhiva.json
+# Configuration: `zhiva.json`
 
-The `zhiva.json` file is the heart of a Zhiva application. It allows you to control installation behavior, application metadata, and how the application is served.
+`zhiva.json` describes an application: its metadata, how it is installed, and how it is served. It must be in the repository root. The schema requires `name`; everything else is optional.
 
-## Example `zhiva.json`
-
-Here is an example of a `zhiva.json` file with all possible fields:
+## Example
 
 ```json
 {
     "name": "My Awesome App",
     "version": "1.0.0",
+    "description": "What the app does",
+    "author": "your-github-name",
+    "license": "MIT",
     "branch": "main",
-    "redirect_repo": "new-org/new-repo",
-    "redirect_zhiva": "config/zhiva.json#main",
     "shortcut": "md",
     "icon": "./assets/icon.png",
     "win_icon": "./assets/icon.ico",
+    "forcePort": 8081,
     "static": {
         "dirs": {
             "/": "./public",
@@ -31,64 +31,92 @@ Here is an example of a `zhiva.json` file with all possible fields:
         "vars": {
             "layout": "public/layout.html"
         }
-    },
-    "url": "https://example.com",
-    "license": "MIT",
-    "forcePort": 8081
+    }
 }
 ```
 
-## Field Reference
+Do not combine `static` with `url`. Use either one, or neither for a full-stack application. See [Application Types](application-types.md).
 
-### Installation & Metadata
+## Field reference
 
-*   `name` (string): The display name of your application. This is used when creating desktop shortcuts.
-*   `version` (string): The version of your application.
-*   `branch` (string): Specifies the default git branch to clone when a user installs your application. Defaults to the repository's default branch.
-*   `redirect_repo` (string): If your repository moves, you can use this field to point the `zhiva install` command to the new location. The format is `username/repository`.
-*   `redirect_zhiva` (string): If you want to keep your `zhiva.json` in a different location or branch within your repository, you can specify it here. The format is `path/to/zhiva.json#branch`.
-*   `shortcut` string: Flags specifying where to create shortcuts on the user's system.
-    *   `"d"`: Creates a shortcut on the user's desktop.
-    *   `"m"`: Creates a shortcut in the system's application menu.
-*   `icon` (string): A path to an icon file (`.png`) to be used for the shortcut on Linux and macOS. This can also be an HTTP/HTTPS URL, from which Zhiva will download the icon during installation.
-*   `win_icon` (string): A path to an icon file (`.ico`) to be used for the shortcut on Windows. This can also be an HTTP/HTTPS URL, from which Zhiva will download the icon during installation.
-*   `license` (string): The license for your application.
-*   `forcePort` (number): A port to force the application to run on. (if possible, sometimes port being taken by other process)
+### Metadata
 
----
+| Field | Type | Description |
+| --- | --- | --- |
+| `name` | string | **Required.** Display name, used for shortcuts and window titles |
+| `version` | string | Application version, informational |
+| `description` | string | Short description |
+| `author` | string | Author name |
+| `license` | string | License identifier, e.g. `MIT` |
 
-### Application Serving
+### Installation
 
-You can define how your application is served. You can either run a full-stack application, a simple static server, or load a remote URL.
+| Field | Type | Description |
+| --- | --- | --- |
+| `branch` | string | Branch to clone and track. Defaults to the repository default branch |
+| `redirect_repo` | `owner/repository` | New location when the repository moves |
+| `redirect_zhiva` | `path/to/zhiva.json#branch` | Location of the manifest, when it is not in the repository root |
+| `shortcut` | `d`, `m`, `dm`, `md` | Where to create shortcuts: desktop, menu or both |
+| `icon` | string | PNG icon for Linux and macOS. Local path or HTTP URL |
+| `win_icon` | string | ICO icon for Windows. Local path or HTTP URL |
 
-*   **Full-stack (Default)**: If neither `static` nor `url` property is defined, Zhiva expects a `start` script in your `package.json`. Zhiva will run your server to handle all file serving and API logic.
+Icons given as URLs are downloaded into the application directory during installation.
 
-*   **Static Server (`static`)**: If the `static` property is present, Zhiva will treat your application as a static web project. Instead of running a start command, it will launch a built-in static server with the configuration you provide. This is ideal for simple websites or applications built with frameworks that output static files (like Vite, React, or static site generators).
+To install without any shortcut, pass `-s n` to `zhiva install`. The value is not stored in `zhiva.json`, because the schema only accepts `d`, `m`, `dm` and `md`.
 
-    *   `dirs` (object): A mapping of URL paths to local directories you want to serve.
-        *   Example: `{"/": "./public"}` will serve the contents of the `./public` directory at the root URL of your application.
-        *   To serve multiple directories at the same root URL, you can use a negative path prefix. For example, `{"/": "public", "-/": "./dist"}` will serve the contents of both the `./public` and `./dist` directories at the root.
-    *   `files` (object): A mapping of specific URL paths to local files. This is useful for serving single files from specific routes. Example: `{"/config.js": "./conf/app.config.js"}`.
-    *   `redirects` (object): A mapping of URL paths to other paths for HTTP redirects. Example: `{"/home": "/"}`.
-    *   `vars` (object): A mapping of variable names to values, used by the Falcon Frame engine. Example: `{"layout": "public/layout.html"}`.
+### Runtime
 
-*   **Remote URL (`url`)**: If the `url` property is present, Zhiva will open the specified URL directly in the application window. This is useful for wrapping existing web applications or websites. The `url` and `static` properties are mutually exclusive.
+| Field | Type | Description |
+| --- | --- | --- |
+| `forcePort` | number | Preferred backend port. Takes precedence over `ZHIVA_PORT` |
+| `url` | string | Load a remote URL instead of a local server |
+| `static` | object | Serve static files instead of running a backend |
 
-    *   Example: `"url": "https://example.com"` will load the Example website.
+If the preferred port is taken, the server falls back to a random free port. The port actually used is written to `.zhiva-port` in the application directory.
 
-## Validating `zhiva.json`
+### `static`
 
-To get autocompletion and validation for `zhiva.json` in VS Code, add the following to your user or workspace `settings.json` file:
+| Field | Description |
+| --- | --- |
+| `dirs` | URL path to directory mapping. Defaults to `{ "/": "." }` |
+| `files` | URL path to single-file mapping |
+| `redirects` | URL path to redirect target |
+| `vars` | Falcon Frame variables passed to the static server |
+
+A leading `-` in a `dirs` key lets several directories share the same URL root; the dashes are stripped before serving.
+
+## Placeholders in the template
+
+The official template ships placeholders instead of real values:
+
+| Placeholder | Replaced with |
+| --- | --- |
+| `[YOUR NAME]` | author |
+| `[YOUR APP NAME]` | application name |
+| `[YEAR]` | current year |
+
+`zhiva create` fills them in `package.json`, `zhiva.json`, `LICENSE` and the README. When you clone the template manually, replace them by hand.
+
+## Validation
+
+The official schema is [zhiva.schema.json](https://raw.githubusercontent.com/wxn0brP/Zhiva/master/zhiva.schema.json). It uses JSON Schema draft-07 and rejects unknown fields.
+
+For autocompletion and validation in VS Code, add this to your user or workspace `settings.json`:
 
 ```json
 "json.schemas": [
     {
-        "fileMatch": [
-            "zhiva.json"
-        ],
+        "fileMatch": ["zhiva.json"],
         "url": "https://raw.githubusercontent.com/wxn0brP/Zhiva/master/zhiva.schema.json"
     }
-],
+]
 ```
 
-This uses the official [zhiva.schema.json](https://raw.githubusercontent.com/wxn0brP/Zhiva/master/zhiva.schema.json) for validation.
+## Environment overrides
+
+| Variable | Effect |
+| --- | --- |
+| `ZHIVA_PORT` | Preferred port, lower priority than `forcePort` |
+| `ZHIVA_ROOT` | Zhiva data directory, default `~/.zhiva` |
+| `ZHIVA_ENGINE` | Path to the native engine binary |
+| `ZHIVA_ASSETS` | Path to shared `base-lib` assets |
